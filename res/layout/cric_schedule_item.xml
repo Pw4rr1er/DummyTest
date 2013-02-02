@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/trans1" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="40dp"
+        android:background="@layout/transparent_background" >
+
+        <TextView
+            android:id="@+id/txtDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Date,Day, Time Information"
+            android:textColor="#FFFFFFFF" />
+
+        <RelativeLayout
+            android:id="@+id/relTeamNames"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDateTime" >
+
+            <TextView
+                android:id="@+id/txtvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="v/s"
+                android:textColor="#FFFFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="25dp"
+                android:layout_toLeftOf="@+id/txtvs"
+                android:text="CSK"
+                android:textColor="#FFFFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:text="MI"
+                android:textColor="#FFFFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtStadium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relTeamNames"
+            android:layout_centerHorizontal="true"
+            android:text="Stadium Information, City"
+            android:textColor="#FFFFFFFF" />
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtStadium"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="5dp"
+            android:background="@layout/transparent_background"
+            android:gravity="center_horizontal"
+            android:text="Match result"
+            android:textColor="#FFFFFFFF" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="1.0" >
+
+        <!-- <ImageView -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:layout_weight="0.1" -->
+        <!-- android:scaleType="fitXY" /> -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/csk3" />
+
+        <!-- <ImageView -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:layout_weight="0.2" -->
+        <!-- android:scaleType="fitXY" /> -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/csk2" />
+
+        <!-- <ImageView -->
+        <!-- android:layout_width="fill_parent" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:layout_weight="0.2" -->
+        <!-- android:scaleType="fitXY" /> -->
+    </RelativeLayout>
+
+</RelativeLayout>
