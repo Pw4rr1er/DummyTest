@@ -8,7 +8,7 @@ public class getDrawable {
 				|| teamName.toLowerCase().trim().equals("chennai super kings"))
 			return R.drawable.csk;
 		else if (teamName.toLowerCase().trim().equals("sh")
-				|| teamName.toLowerCase().trim().equals("deccan chargers"))
+				|| teamName.toLowerCase().trim().equals("sunrisers hyderabad"))
 			return R.drawable.dc;
 		else if (teamName.toLowerCase().trim().equals("dd")
 				|| teamName.toLowerCase().trim().equals("delhi daredevils"))
@@ -42,8 +42,8 @@ public class getDrawable {
 	public String getTeamShortCode(String teamName) {
 		if (teamName.equalsIgnoreCase("Chennai Super Kings"))
 			return "CSK";
-		else if (teamName.equalsIgnoreCase("Deccan Chargers"))
-			return "DC";
+		else if (teamName.equalsIgnoreCase("Sunrisers Hyderabad"))
+			return "SH";
 		else if (teamName.equalsIgnoreCase("Delhi Daredevils"))
 			return "DD";
 		else if (teamName.equalsIgnoreCase("Kings XI Punjab"))

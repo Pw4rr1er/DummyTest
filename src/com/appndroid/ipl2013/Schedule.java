@@ -48,19 +48,19 @@ public class Schedule extends Activity implements OnItemClickListener {
 	ImageView backBtnImage;
 	Dialog listDialog;
 
-	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dc,
-			R.drawable.dd, R.drawable.kxip, R.drawable.kkr,
-			R.drawable.mi_small, R.drawable.pwi, R.drawable.rr, R.drawable.rcb };
+	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd,
+			R.drawable.kxip, R.drawable.kkr, R.drawable.mi_small,
+			R.drawable.pwi, R.drawable.rr, R.drawable.rcb, R.drawable.dc };
 
 	static final String[] title = new String[] { "Chennai Super Kings",
-			"Deccan Chargers", "Delhi Daredevils", "Kings XI Punjab",
-			"Kolkata Knight Riders", "Mumbai Indians", "Pune Warriors",
-			"Rajasthan Royals", "Royal Challnegers Banglore" };
+			"Delhi Daredevils", "Kings XI Punjab", "Kolkata Knight Riders",
+			"Mumbai Indians", "Pune Warriors", "Rajasthan Royals",
+			"Royal Challnegers Banglore", "Sunrisers Hyderabad" };
 
-	static final String[] Stadiums = new String[] {
-			"ACA-VDCA Stadium, Visakhapatnam", "Barabati Stadium, Cuttack",
-			"Eden Gardens, Kolkata", "Feroz Shah Kotla, Delhi",
+	static final String[] Stadiums = new String[] { "Eden Gardens, Kolkata",
+			"Feroz Shah Kotla, Delhi",
 			"Himachal Pradesh Cricket Association Stadium, Dharamsala",
+			"JSCA International Cricket Stadium, Ranchi",
 			"M. Chinnaswamy Stadium, Bangalore",
 			"M.A. Chidambaram Stadium, Chennai",
 			"Punjab Cricket Association Stadium, Chandigarh",
@@ -415,18 +415,25 @@ public class Schedule extends Activity implements OnItemClickListener {
 			String time = cur.getString(cur.getColumnIndex("IST")).trim();
 			String teamA = cur.getString(cur.getColumnIndex("TeamA")).trim();
 			String teamB = cur.getString(cur.getColumnIndex("TeamB")).trim();
-			String stadium = cur.getString(cur.getColumnIndex("Stadium")).trim();
+			String stadium = cur.getString(cur.getColumnIndex("Stadium"))
+					.trim();
 			String venue = cur.getString(cur.getColumnIndex("Venue")).trim();
 
-			String winnerTeam = cur.getString(cur.getColumnIndex("WinnerTeam")).trim();;
+			String winnerTeam = cur.getString(cur.getColumnIndex("WinnerTeam"))
+					.trim();
+			;
 			winnerTeamCounter[currentposotion] = winnerTeam;
 
-//			String matchResult = cur.getString(cur.getColumnIndex("MatchResult")).trim();
-//			String teamAscore = cur.getString(cur.getColumnIndex("TeamA Score")).trim();
-//			String teamBscore = cur.getString(cur.getColumnIndex("TeamB Score")).trim();
-//			String manofthematch = cur.getString(cur.getColumnIndex("ManOfTheMatch")).trim();
+			// String matchResult =
+			// cur.getString(cur.getColumnIndex("MatchResult")).trim();
+			// String teamAscore =
+			// cur.getString(cur.getColumnIndex("TeamA Score")).trim();
+			// String teamBscore =
+			// cur.getString(cur.getColumnIndex("TeamB Score")).trim();
+			// String manofthematch =
+			// cur.getString(cur.getColumnIndex("ManOfTheMatch")).trim();
 
-			String matchDayDate = day + ", " + date + "  "+time+" IST";
+			String matchDayDate = day + ", " + date + "  " + time + " IST";
 
 			if (matchnumber.equals("QUALIFIER 1"))
 				matchDayDate = matchDayDate + " - " + "QUALIFIER 1";
