@@ -56,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/layoutBottom"
             android:cacheColorHint="@android:color/transparent"
-            android:listSelector="@android:color/transparent" />
+            android:listSelector="@android:color/transparent"
+            android:divider="@android:color/transparent" />
     </RelativeLayout>
 
     <LinearLayout
