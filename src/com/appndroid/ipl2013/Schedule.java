@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,9 +49,9 @@ public class Schedule extends Activity implements OnItemClickListener {
 	ImageView backBtnImage;
 	Dialog listDialog;
 
-	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd,
-			R.drawable.kxip, R.drawable.kkr, R.drawable.mi_small,
-			R.drawable.pwi, R.drawable.rr, R.drawable.rcb, R.drawable.dc };
+	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd_small,
+			R.drawable.kxip_small, R.drawable.kkr_small, R.drawable.mi_small,
+			R.drawable.pwi_small, R.drawable.rr_small, R.drawable.rcb_small, R.drawable.dc_small };
 
 	static final String[] title = new String[] { "Chennai Super Kings",
 			"Delhi Daredevils", "Kings XI Punjab", "Kolkata Knight Riders",
@@ -118,6 +119,17 @@ public class Schedule extends Activity implements OnItemClickListener {
 				teamImage.setVisibility(View.VISIBLE);
 			}
 		});
+
+		String fontPath = "fonts/Face Your Fears.ttf";
+
+		// text view label
+		TextView txtSchedule = (TextView) findViewById(R.id.title);
+
+		// Loading Font Face
+		Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
+
+		// Applying font
+		txtSchedule.setTypeface(tf);
 
 	}
 

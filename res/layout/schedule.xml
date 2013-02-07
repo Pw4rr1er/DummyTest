@@ -26,7 +26,7 @@
             android:scrollHorizontally="true"
             android:text="Schedule"
             android:textColor="#69D2E7"
-            android:textSize="18.0sp"
+            android:textSize="24.0sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
