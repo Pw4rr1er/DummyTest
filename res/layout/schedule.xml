@@ -54,10 +54,10 @@
             android:id="@+id/scheduleListView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/layoutBottom"
+            android:layout_marginBottom="46dp"
             android:cacheColorHint="@android:color/transparent"
-            android:listSelector="@android:color/transparent"
-            android:divider="@android:color/transparent" />
+            android:divider="@android:color/transparent"
+            android:listSelector="@android:color/transparent" />
     </RelativeLayout>
 
     <LinearLayout
@@ -97,10 +97,14 @@
 
             <ImageView
                 android:id="@+id/midName"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/schfooter" />
+                android:layout_toLeftOf="@+id/stadium"
+                android:layout_toRightOf="@+id/teams"
+                android:adjustViewBounds="true"
+                android:background="@drawable/schfooter"
+                android:scaleType="center" />
 
             <ImageView
                 android:id="@+id/stadium"
