@@ -80,6 +80,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom" >
 
+            <LinearLayout
+                android:id="@+id/llfooterleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+            
+
             <ImageView
                 android:id="@+id/teams"
                 android:layout_width="wrap_content"
@@ -91,9 +98,10 @@
                 android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/teams"
                 android:background="@drawable/backbtn"
                 android:visibility="gone" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/midName"
@@ -101,10 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_toLeftOf="@+id/stadium"
-                android:layout_toRightOf="@+id/teams"
-                android:adjustViewBounds="true"
-                android:background="@drawable/schfooter"
-                android:scaleType="center" />
+                android:layout_toRightOf="@+id/llfooterleft"
+                android:background="@drawable/schfooter" />
 
             <ImageView
                 android:id="@+id/stadium"

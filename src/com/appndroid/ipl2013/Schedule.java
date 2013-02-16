@@ -48,6 +48,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 	ImageView invisibleImge;
 	ImageView backBtnImage;
 	Dialog listDialog;
+	boolean bSubViewDisplayed;
 
 	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd_small,
 			R.drawable.kxip_small, R.drawable.kkr_small, R.drawable.mi_small,
@@ -131,6 +132,31 @@ public class Schedule extends Activity implements OnItemClickListener {
 		// Applying font
 		txtSchedule.setTypeface(tf);
 
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		
+		if(bSubViewDisplayed)
+		{
+			bSubViewDisplayed=false;
+			backBtnImage.setVisibility(View.GONE);
+			invisibleImge.setVisibility(View.GONE);
+
+			Cursor cur = db.query("schedule", null, null, null, null, null,
+					null);
+			fillScheduleList(cur);
+
+			listViewObj = (ListView) findViewById(R.id.scheduleListView);
+			listViewObj.setAdapter(m_adapter);
+
+			stadiumImage.setVisibility(View.VISIBLE);
+			teamImage.setVisibility(View.VISIBLE);
+			return;
+		}
+		super.onBackPressed();
+		
 	}
 
 	private void showdialog(View view, String eventClicked) {
@@ -399,11 +425,12 @@ public class Schedule extends Activity implements OnItemClickListener {
 			listViewObj.setAdapter(m_adapter);
 
 		}
-
+		bSubViewDisplayed= true;
 		backBtnImage.setVisibility(View.VISIBLE);
 		invisibleImge.setVisibility(View.VISIBLE);
 
 		listDialog.dismiss();
+		
 
 	}
 
