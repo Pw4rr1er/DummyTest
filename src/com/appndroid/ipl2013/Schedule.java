@@ -52,7 +52,8 @@ public class Schedule extends Activity implements OnItemClickListener {
 
 	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd_small,
 			R.drawable.kxip_small, R.drawable.kkr_small, R.drawable.mi_small,
-			R.drawable.pwi_small, R.drawable.rr_small, R.drawable.rcb_small, R.drawable.dc_small };
+			R.drawable.pwi_small, R.drawable.rr_small, R.drawable.rcb_small,
+			R.drawable.dc_small };
 
 	static final String[] title = new String[] { "Chennai Super Kings",
 			"Delhi Daredevils", "Kings XI Punjab", "Kolkata Knight Riders",
@@ -133,14 +134,13 @@ public class Schedule extends Activity implements OnItemClickListener {
 		txtSchedule.setTypeface(tf);
 
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		
-		if(bSubViewDisplayed)
-		{
-			bSubViewDisplayed=false;
+
+		if (bSubViewDisplayed) {
+			bSubViewDisplayed = false;
 			backBtnImage.setVisibility(View.GONE);
 			invisibleImge.setVisibility(View.GONE);
 
@@ -156,7 +156,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			return;
 		}
 		super.onBackPressed();
-		
+
 	}
 
 	private void showdialog(View view, String eventClicked) {
@@ -277,9 +277,11 @@ public class Schedule extends Activity implements OnItemClickListener {
 			imgTeamB.setImageResource(drawable.getIcon(szTeamB));
 			txtTeamA.setText(szTeamA);
 			txtTeamB.setText(szTeamB);
+			txtResult.setVisibility(View.GONE);
 
 			String strResult = cursor.getString(
 					cursor.getColumnIndex("MatchResult")).trim();
+
 			if (strResult.length() > 1) {
 				txtResult.setVisibility(view.VISIBLE);
 				txtResult.setText(strResult);
@@ -425,12 +427,11 @@ public class Schedule extends Activity implements OnItemClickListener {
 			listViewObj.setAdapter(m_adapter);
 
 		}
-		bSubViewDisplayed= true;
+		bSubViewDisplayed = true;
 		backBtnImage.setVisibility(View.VISIBLE);
 		invisibleImge.setVisibility(View.VISIBLE);
 
 		listDialog.dismiss();
-		
 
 	}
 

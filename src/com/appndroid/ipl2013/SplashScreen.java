@@ -12,7 +12,11 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Window;
 
+import com.appndroid.ipl2013.NetworkManager.HttpAsyncConnector;
+
 public class SplashScreen extends Activity {
+	
+	private NetworkManager networkmanager;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,7 @@ public class SplashScreen extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
+			fetchDocs();
 
 		}
 	}
@@ -96,5 +101,17 @@ public class SplashScreen extends Activity {
 		}
 
 	}
+	
+	private void fetchDocs()
+    {
+        networkmanager = new NetworkManager( SplashScreen.this );
+        if( !NetworkManager.isDataFetched )
+        {
+
+            HttpAsyncConnector httpConnect = networkmanager.new HttpAsyncConnector();
+            httpConnect.setTaskParams( ApplicationDefines.CommandType.COMMAND_SCHEDULE );
+            httpConnect.execute();
+        }
+    }
 
 }
