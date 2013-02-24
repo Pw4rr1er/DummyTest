@@ -21,13 +21,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class Schedule extends Activity implements OnItemClickListener {
 
@@ -146,6 +146,8 @@ public class Schedule extends Activity implements OnItemClickListener {
 				
 			}
 		});
+		
+		AppRater.app_launched( this );
 
 	}
 
