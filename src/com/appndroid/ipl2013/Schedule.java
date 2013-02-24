@@ -122,7 +122,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			}
 		});
 
-		String fontPath = "fonts/Face Your fears.TTF";
+		String fontPath = "fonts/Face Your Fears.ttf";
 
 		// text view label
 		TextView txtSchedule = (TextView) findViewById(R.id.title);

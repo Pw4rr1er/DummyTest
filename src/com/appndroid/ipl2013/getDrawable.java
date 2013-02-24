@@ -36,7 +36,7 @@ public class getDrawable {
 		else if (teamName.toLowerCase().trim().equals("appicon"))
 			return R.drawable.ic_launcher;
 		else
-			return R.drawable.ic_launcher;
+			return R.drawable.blank;
 	}
 
 	public String getTeamShortCode(String teamName) {
