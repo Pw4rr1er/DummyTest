@@ -8,6 +8,7 @@ import java.util.Vector;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
@@ -48,6 +49,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 	ImageView invisibleImge;
 	ImageView backBtnImage;
 	Dialog listDialog;
+	TextView txtInfo;
 	boolean bSubViewDisplayed;
 
 	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd_small,
@@ -132,6 +134,18 @@ public class Schedule extends Activity implements OnItemClickListener {
 
 		// Applying font
 		txtSchedule.setTypeface(tf);
+		
+		txtInfo = (TextView) findViewById(R.id.txtInfo);
+		txtInfo.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(Schedule.this, AboutUs.class);
+				startActivity(i);
+				
+			}
+		});
 
 	}
 

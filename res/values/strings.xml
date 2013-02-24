@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">IPL2013</string>
+    <string name="app_name">IPL 2013</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-
+    <string name="version_txt">Version</string>
+    <string name="shareApp_txt">Share this app...!!!</string>
+    <string name="tellOthers_txt">tell your friends</string>
+    <string name="rateApp_txt">Rate this app on Market!</string>
+    <string name="rateApp_subtitle_txt">Is it worth 5 stars?</string>
+    <string name="feedback_txt">Send us your feedback!</string>
+    <string name="feedback_subtitle_txt">Help us make this app better</string>
+    <string name="abtAppndroid_txt">About Appndroid</string>
+    <string name="aboutUs_txt1">Appndroid is an independent group of enthusiastic developers.</string>
+	<string name="aboutUs_txt2">Our objective is to develop apps for different sports events,besides that we are also working on developing business applications.</string>
+	<string name="aboutUs_txt3">Previously we have developed cricketing apps like IPL Twenty 12 &amp; T20 world cup 2012. We have also recently launched a Formula 1 application named F1 2013</string>
+	<string name="aboutUs_txt4">This is an initial release for IPl 2013 which contains just the schedule.</string>
+	<string name="aboutUs_txt5">Please check for the updates for many more features like like Match results, Points table,  Orange cap, Purple cap &amp; Live score.</string>
+	<string name="poweredby_txt">Powered by</string>
+	<string name="companyName_txt">Appndroid</string>
+	<string name="CheckOut">Check out IPL 2013 for complete information on IPL 2013 </string>
+	<string name="feedBackEmail">feedback.appndroid@gmail.com</string>
+	<string name="googlePlayLink">https://play.google.com/store/apps/details?id=</string>
 </resources>
