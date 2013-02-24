@@ -109,6 +109,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				bSubViewDisplayed=false;
 				backBtnImage.setVisibility(View.GONE);
 				invisibleImge.setVisibility(View.GONE);
 
