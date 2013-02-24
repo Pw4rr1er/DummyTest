@@ -53,7 +53,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 	private Integer[] teamImages = { R.drawable.csk_small, R.drawable.dd_small,
 			R.drawable.kxip_small, R.drawable.kkr_small, R.drawable.mi_small,
 			R.drawable.pwi_small, R.drawable.rr_small, R.drawable.rcb_small,
-			R.drawable.dc_small };
+			R.drawable.sh_small };
 
 	static final String[] title = new String[] { "Chennai Super Kings",
 			"Delhi Daredevils", "Kings XI Punjab", "Kolkata Knight Riders",
@@ -122,7 +122,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			}
 		});
 
-		String fontPath = "fonts/Face Your Fears.ttf";
+		String fontPath = "fonts/Face Your fears.TTF";
 
 		// text view label
 		TextView txtSchedule = (TextView) findViewById(R.id.title);

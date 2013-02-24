@@ -9,7 +9,7 @@ public class getDrawable {
 			return R.drawable.csk;
 		else if (teamName.toLowerCase().trim().equals("sh")
 				|| teamName.toLowerCase().trim().equals("sunrisers hyderabad"))
-			return R.drawable.dc;
+			return R.drawable.sh;
 		else if (teamName.toLowerCase().trim().equals("dd")
 				|| teamName.toLowerCase().trim().equals("delhi daredevils"))
 			return R.drawable.dd;
