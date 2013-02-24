@@ -36,7 +36,7 @@ public class getDrawable {
 		else if (teamName.toLowerCase().trim().equals("appicon"))
 			return R.drawable.ic_launcher;
 		else
-			return R.drawable.blank;
+			return R.drawable.ipl2013;
 	}
 
 	public String getTeamShortCode(String teamName) {
@@ -53,7 +53,7 @@ public class getDrawable {
 		else if (teamName.equalsIgnoreCase("Mumbai Indians"))
 			return "MI";
 		else if (teamName.equalsIgnoreCase("Pune Warriors"))
-			return "PWI";
+			return "PW";
 		else if (teamName.equalsIgnoreCase("Rajasthan Royals"))
 			return "RR";
 		else if (teamName.equalsIgnoreCase("Royal challengers bangalore"))
