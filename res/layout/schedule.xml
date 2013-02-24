@@ -30,15 +30,15 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtInfo"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:id="@+id/txtInfo"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_alignBaseline="@+id/title"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
             android:text="INFO"
-            android:textColor="#FFFFFFFF"
-            android:layout_centerVertical="true" />
+            android:textColor="#FFFFFFFF" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -99,7 +99,7 @@
 
                 <ImageView
                     android:id="@+id/teams"
-                    android:layout_width="wrap_content"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:background="@drawable/teambtn" />
@@ -118,24 +118,24 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_toLeftOf="@+id/stadium"
-                android:layout_toRightOf="@+id/llfooterleft"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
                 android:background="@drawable/schfooter" />
 
             <ImageView
+                android:id="@+id/invisible"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/invisible" />
+
+            <ImageView
                 android:id="@+id/stadium"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/stadiumbtn" />
 
-            <ImageView
-                android:id="@+id/invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/invisible"
-                android:visibility="gone" />
         </RelativeLayout>
     </LinearLayout>
 
