@@ -60,7 +60,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 	static final String[] title = new String[] { "Chennai Super Kings",
 			"Delhi Daredevils", "Kings XI Punjab", "Kolkata Knight Riders",
 			"Mumbai Indians", "Pune Warriors", "Rajasthan Royals",
-			"Royal Challnegers Banglore", "Sunrisers Hyderabad" };
+			"Royal Challengers Bangalore", "Sunrisers Hyderabad" };
 
 	static final String[] Stadiums = new String[] { "Eden Gardens, Kolkata",
 			"Feroz Shah Kotla, Delhi",
