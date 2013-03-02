@@ -67,7 +67,8 @@
             android:layout_below="@+id/relTeamNames"
             android:layout_centerHorizontal="true"
             android:text="Stadium Information, City"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#FFFFFFFF"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/txtResult"
