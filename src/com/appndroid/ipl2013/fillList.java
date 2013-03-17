@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import android.R.integer;
-import android.R.string;
 import android.database.Cursor;
 
 public class fillList {

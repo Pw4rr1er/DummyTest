@@ -51,7 +51,7 @@ public class SplashScreen extends Activity {
 			default:
 			case 0:
 				super.handleMessage(msg);
-				Intent i = new Intent(SplashScreen.this, SwipeyTabsSampleActivity.class);
+				Intent i = new Intent(SplashScreen.this, HomeScreen.class);
 				startActivity(i);
 
 				SplashScreen.this.finish();

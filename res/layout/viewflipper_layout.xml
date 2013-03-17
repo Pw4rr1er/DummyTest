@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg2"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+<!--         <ImageView -->
+<!--             android:id="@+id/header" -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_alignParentLeft="true" -->
+<!--             android:layout_centerInParent="true" -->
+<!--             android:background="@drawable/header" /> -->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@layout/header_seperator" />
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:cl="http://schemas.android.com/apk/res/com.appndroid.ipl2013"
+        android:id="@+id/layoutBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <com.appndroid.ipl2013.ExpandablePanel
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_background"
+            cl:collapsedHeight="50dip"
+            cl:content="@+id/value"
+            cl:handle="@+id/expand"
+            cl:list="@+id/playerList"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@id/value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text=" Team Squad "
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:id="@id/expand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/up" />
+
+                <ListView
+                    android:id="@+id/playerList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="220dp"
+                    android:layout_below="@id/value"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:listSelector="@android:color/transparent"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </com.appndroid.ipl2013.ExpandablePanel>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@layout/header_seperator" />
+
+<!--         <ImageView -->
+<!--             android:id="@+id/header" -->
+<!--             android:layout_width="fill_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_alignParentLeft="true" -->
+<!--             android:layout_centerInParent="true" -->
+<!--             android:background="@drawable/teamdetailsfooter" /> -->
+    </LinearLayout>
+
+    <android.gesture.GestureOverlayView
+        android:id="@+id/gestures"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/layoutBottom"
+        android:layout_below="@+id/layoutTop"
+        android:eventsInterceptionEnabled="true"
+        android:gestureColor="@android:color/transparent"
+        android:gestureStrokeType="multiple"
+        android:orientation="vertical"
+        android:uncertainGestureColor="@android:color/transparent" >
+
+        <ViewFlipper
+            android:id="@+id/flip"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/transparent_background" >
+
+            <include
+                android:id="@+id/teamListView"
+                layout="@layout/teamlist" />
+        </ViewFlipper>
+    </android.gesture.GestureOverlayView>
+
+</RelativeLayout>

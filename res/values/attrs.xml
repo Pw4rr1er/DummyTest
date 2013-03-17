@@ -22,5 +22,12 @@
         <attr name="bottomBarHeight" format="dimension" />
         <attr name="tabIndicatorHeight" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="ExpandablePanel">
+        <attr name="handle" format="reference" />
+        <attr name="content" format="reference" />
+        <attr name="list" format="reference" />
+        <attr name="collapsedHeight" format="dimension"/>
+        <attr name="animationDuration" format="integer"/>
+    </declare-styleable>
 
 </resources>

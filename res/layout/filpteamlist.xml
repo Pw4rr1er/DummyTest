@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/teamDeatilsLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+      <RelativeLayout
+        android:id="@+id/flip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" >
+        
+         <TextView 
+             android:id="@+id/counter1" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"> 
+          </TextView>
+               
+          <TextView 
+             android:id="@+id/counter2" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter1"
+             android:layout_marginLeft="5dp"> 
+          </TextView>
+          
+          <TextView 
+             android:id="@+id/counter3" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter2"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+          
+          <TextView 
+             android:id="@+id/counter4" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter3"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+          
+          <TextView 
+             android:id="@+id/counter5" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter4"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+          
+          <TextView 
+             android:id="@+id/counter6" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter5"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+          
+          <TextView 
+             android:id="@+id/counter7" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter6"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+          
+          <TextView 
+             android:id="@+id/counter8" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter7"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+          
+          <TextView 
+             android:id="@+id/counter9" 
+             android:layout_width="10dp" 
+             android:layout_height="10dp"
+             android:background="@drawable/countershape"
+             android:layout_toRightOf="@+id/counter8"
+             android:layout_marginLeft="5dp"> 
+          </TextView>      
+                
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/flipRel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:layout_below="@id/flip" >
+
+        <ImageView
+            android:id="@+id/fliperteamIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/csk" 
+            android:layout_marginLeft="10px"/>
+
+        <TextView
+            android:id="@+id/teamFulllName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/fliperteamIcon"
+            android:layout_marginLeft="30dp"
+            android:text="Team Name"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            >
+        </TextView>
+        
+        
+         
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/flipRel0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flipRel" >
+   
+     <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="@layout/data_seperator" 
+        android:layout_marginBottom="10dp"/>
+    </RelativeLayout>
+    
+    
+     <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+         android:layout_below="@id/flipRel0" >
+     
+         <RelativeLayout  android:id="@+id/linerFlip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+    
+        <TextView
+            android:id="@+id/matchSum"
+            style="@style/Theme.txtpadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Match Summary 2008-2011" 
+            android:layout_below="@id/flipRel0"/>
+
+        <TableLayout
+        android:id="@+id/flipRel1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/matchSum"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+         >
+        <TableRow   style="@style/Theme.txtTheme"
+             android:layout_marginLeft="12px" >
+
+            <TextView
+                android:id="@+id/teammatch"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Match" />
+
+            <TextView
+                android:id="@+id/teamwon"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Won" />
+
+            <TextView
+                android:id="@+id/teamlost"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Lost" />
+
+            <TextView
+                android:id="@+id/teamtied"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Tied" />
+
+            <TextView
+                android:id="@+id/teamnr"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="NR" />
+
+            <TextView
+                android:id="@+id/teamwinper"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Win Per" />
+        </TableRow>
+
+        <TableRow  style="@style/Theme.txtTheme" 
+            android:layout_marginLeft="12px" >
+
+            <TextView
+                android:id="@+id/matchPlayed"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="60" />
+
+            <TextView
+                android:id="@+id/matchWon"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="50" />
+
+            <TextView
+                android:id="@+id/matchLost"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="8" />
+
+            <TextView
+                android:id="@+id/matchTied"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="2" />
+
+            <TextView
+                android:id="@+id/matchNoResult"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/matchWinPercentage"
+                style="@style/Theme.padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="80" />
+        </TableRow>
+    </TableLayout>
+
+    <RelativeLayout
+        android:id="@+id/flipRel2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flipRel1" >
+
+        <TextView
+            android:id="@+id/teamTotal"
+            style="@style/Theme.txtpadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team Total" />
+
+        <TextView
+            android:id="@+id/hScore"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/teamTotal"
+            android:text="Highest Score 264/5 Vs RR , Chennai 2010" />
+
+        <TextView
+            android:id="@+id/lScore"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hScore"
+            android:text="Lowest Score 109 Vs RR , jaipur 2008" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/flipRel3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flipRel2" >
+
+        <TextView
+            android:id="@+id/largestVic"
+            style="@style/Theme.txtpadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Largest Victory" />
+
+        <TextView
+            android:id="@+id/byRuns"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/largestVic"
+            android:text="Win by 92 Runs Vs RCB , Port Elizabeth 2009" />
+
+        <TextView
+            android:id="@+id/byWkts"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/byRuns"
+            android:text="Win by 9 Wkts Vs KKR , Chennai 2008" />
+    </RelativeLayout>
+    
+     <RelativeLayout
+        android:id="@+id/flipRel4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flipRel3" >
+
+        <TextView
+            android:id="@+id/highestPartnership"
+            style="@style/Theme.txtpadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Highest Partnership " />
+
+        <TextView
+            android:id="@+id/patners"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/highestPartnership"
+            android:text="MEK Hussey, M Vijay, Runs - 159 Vs RCB , Chennai 2011" />
+
+    </RelativeLayout>
+    
+     <RelativeLayout
+        android:id="@+id/flipRel5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flipRel4" >
+
+        <TextView
+            android:id="@+id/highestScore"
+            style="@style/Theme.txtpadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Highest Scorer" />
+
+        <TextView
+            android:id="@+id/batsman"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/highestScore"
+            android:text="M Vijay 127*(56) Vs RR , SR 226.78 , Year 2010" />
+
+    </RelativeLayout>
+    
+     <RelativeLayout
+        android:id="@+id/flipRel6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flipRel5" >
+
+        <TextView
+            android:id="@+id/bestBowling"
+            style="@style/Theme.txtpadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best Bowling figure" />
+
+        <TextView
+            android:id="@+id/bowler"
+            style="@style/Theme.bottompadding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bestBowling"
+            android:text="L balaji  5/24  Vs KXP , Ovr 4.0, Year 2008" />
+
+    </RelativeLayout>
+</RelativeLayout>
+      </ScrollView>
+</RelativeLayout>

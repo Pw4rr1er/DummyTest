@@ -136,19 +136,19 @@ public class Schedule extends Activity implements OnItemClickListener {
 		// Applying font
 		txtSchedule.setTypeface(tf);
 		
-		txtInfo = (TextView) findViewById(R.id.txtInfo);
-		txtInfo.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(Schedule.this, AboutUs.class);
-				startActivity(i);
-				
-			}
-		});
+//		txtInfo = (TextView) findViewById(R.id.txtInfo);
+//		txtInfo.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				Intent i = new Intent(Schedule.this, AboutUs.class);
+//				startActivity(i);
+//				
+//			}
+//		});
 		
-		AppRater.app_launched( this );
+		//AppRater.app_launched( this );
 
 	}
 
