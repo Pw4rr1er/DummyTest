@@ -89,7 +89,7 @@ public class HomeScreen extends Activity {
 
 		mcontext = this;
 		Utils.setContext(this);
-		
+
 		String fontPath = "fonts/Face Your Fears.ttf";
 		TextView txtTitle = (TextView) findViewById(R.id.title);
 		Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
@@ -186,143 +186,143 @@ public class HomeScreen extends Activity {
 			}
 		});
 
-		
 		AppRater.app_launched(this);
 
 		if (!Utils.isDocsFetched)
 			fetchDocs();
 	}
 
-//	private StringBuilder inputStreamToString(InputStream content)
-//			throws IOException {
-//		// TODO Auto-generated method stub
-//		String line = "";
-//		StringBuilder total = new StringBuilder();
-//
-//		BufferedReader rd = new BufferedReader(new InputStreamReader(content));
-//		while ((line = rd.readLine()) != null) {
-//			total.append(line);
-//		}
-//		return total;
-//	}
+	// private StringBuilder inputStreamToString(InputStream content)
+	// throws IOException {
+	// // TODO Auto-generated method stub
+	// String line = "";
+	// StringBuilder total = new StringBuilder();
+	//
+	// BufferedReader rd = new BufferedReader(new InputStreamReader(content));
+	// while ((line = rd.readLine()) != null) {
+	// total.append(line);
+	// }
+	// return total;
+	// }
 
-//	private void populateGallery() {
-//		// TODO Auto-generated method stub
-//		if (mCursor.getCount() > 0) {
-//			TextView txt = (TextView) findViewById(R.id.txtTodaysMatches);
-//			txt.setVisibility(View.VISIBLE);
-//			teamA.clear();
-//			teamB.clear();
-//			match.clear();
-//			stadium.clear();
-//			date.clear();
-//			time.clear();
-//			group.clear();
-//			matchURL.clear();
-//			do {
-//				String szTeamA = mCursor.getString(mCursor
-//						.getColumnIndex("TeamA"));
-//				String szTeamB = mCursor.getString(mCursor
-//						.getColumnIndex("TeamB"));
-//				teamA.add(szTeamA);
-//				teamB.add(szTeamB);
-//				stadium.add(mCursor.getString(mCursor.getColumnIndex("Stadium")));
-//				group.add(mCursor.getString(mCursor.getColumnIndex("gang")));
-//				match.add(drawable.getTeamShortCode(szTeamA) + " vs "
-//						+ drawable.getTeamShortCode(szTeamB));
-//
-//				String time = mCursor.getString(mCursor.getColumnIndex("GMT"));
-//				SharedPreferences sp = PreferenceManager
-//						.getDefaultSharedPreferences(HomeScreen.this);
-//				int milli_offset = sp.getInt("offset", 0);
-//				SimpleDateFormat df1 = new SimpleDateFormat("HH:mm:ss");
-//				Date d = null;
-//				try {
-//					d = df1.parse(time + ":00");
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				Long lngTime = d.getTime();
-//				lngTime += (milli_offset);
-//				Date d2 = new Date(lngTime);
-//				int minutes = d2.getMinutes();
-//				String min;
-//				if (minutes == 0)
-//					min = "00";
-//				else
-//					min = String.valueOf(minutes);
-//				this.time.add(time + " GMT / " + d2.getHours() + ":" + min
-//						+ " Local");
-//
-//				String date = mCursor.getString(mCursor.getColumnIndex("Date"));
-//				String[] strarr = date.split(" ");
-//				this.date.add(strarr[0] + " "
-//						+ drawable.getMonthName(strarr[1]) + " ("
-//						+ mCursor.getString(mCursor.getColumnIndex("Other1"))
-//						+ ")");
-//				matchURL.add(mCursor.getString(mCursor
-//						.getColumnIndex("MatchUrl")));
-//
-//			} while (mCursor.moveToNext());
-//
-//			// Log.d( "HomeScreen-populateGallery", " Total items in A added : "
-//			// + teamA.size() );
-//			gallery.setAdapter(mAdapter);
-//
-//			if (mCursor.getCount() > 1) {
-//				mDotsLayout.setVisibility(View.VISIBLE);
-//				counter1.setBackgroundResource(R.drawable.countershape_selected);
-//				counter2.setBackgroundResource(R.drawable.countershape);
-//			} else
-//				mDotsLayout.setVisibility(View.GONE);
-//
-//			gallery.setOnItemClickListener(new OnItemClickListener() {
-//				public void onItemClick(AdapterView parent, View v,
-//						int position, long id) {
-//					TextView txtTeamA = (TextView) v
-//							.findViewById(R.id.textview_stadium);
-//					TextView txtTeamB = (TextView) v
-//							.findViewById(R.id.textview_match);
-//					TextView txtMatchURL = (TextView) v
-//							.findViewById(R.id.textview_date);
-//
-//					String szTeamA = txtTeamA.getTag().toString();
-//					String szTeamB = txtTeamB.getTag().toString();
-//					String szMatchURL = txtMatchURL.getTag().toString();
-//
-//					Intent scoreIntent = new Intent(HomeScreen.this,
-//							LiveLayout.class);
-//					scoreIntent.putExtra("match", szTeamA + "||" + szTeamB
-//							+ "||" + szMatchURL);
-//					startActivity(scoreIntent);
-//				}
-//			});
-//
-//			gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//				@Override
-//				public void onItemSelected(AdapterView adapterView, View view,
-//						int pos, long l) {
-//					if (mDotsLayout.getVisibility() == View.VISIBLE) {
-//						if (pos == 0) {
-//							counter1.setBackgroundResource(R.drawable.countershape_selected);
-//							counter2.setBackgroundResource(R.drawable.countershape);
-//						} else {
-//							counter2.setBackgroundResource(R.drawable.countershape_selected);
-//							counter1.setBackgroundResource(R.drawable.countershape);
-//						}
-//					}
-//				}
-//
-//				@Override
-//				public void onNothingSelected(AdapterView adapterView) {
-//
-//				}
-//			});
-//
-//		}
-//
-//	}
+	// private void populateGallery() {
+	// // TODO Auto-generated method stub
+	// if (mCursor.getCount() > 0) {
+	// TextView txt = (TextView) findViewById(R.id.txtTodaysMatches);
+	// txt.setVisibility(View.VISIBLE);
+	// teamA.clear();
+	// teamB.clear();
+	// match.clear();
+	// stadium.clear();
+	// date.clear();
+	// time.clear();
+	// group.clear();
+	// matchURL.clear();
+	// do {
+	// String szTeamA = mCursor.getString(mCursor
+	// .getColumnIndex("TeamA"));
+	// String szTeamB = mCursor.getString(mCursor
+	// .getColumnIndex("TeamB"));
+	// teamA.add(szTeamA);
+	// teamB.add(szTeamB);
+	// stadium.add(mCursor.getString(mCursor.getColumnIndex("Stadium")));
+	// group.add(mCursor.getString(mCursor.getColumnIndex("gang")));
+	// match.add(drawable.getTeamShortCode(szTeamA) + " vs "
+	// + drawable.getTeamShortCode(szTeamB));
+	//
+	// String time = mCursor.getString(mCursor.getColumnIndex("GMT"));
+	// SharedPreferences sp = PreferenceManager
+	// .getDefaultSharedPreferences(HomeScreen.this);
+	// int milli_offset = sp.getInt("offset", 0);
+	// SimpleDateFormat df1 = new SimpleDateFormat("HH:mm:ss");
+	// Date d = null;
+	// try {
+	// d = df1.parse(time + ":00");
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// Long lngTime = d.getTime();
+	// lngTime += (milli_offset);
+	// Date d2 = new Date(lngTime);
+	// int minutes = d2.getMinutes();
+	// String min;
+	// if (minutes == 0)
+	// min = "00";
+	// else
+	// min = String.valueOf(minutes);
+	// this.time.add(time + " GMT / " + d2.getHours() + ":" + min
+	// + " Local");
+	//
+	// String date = mCursor.getString(mCursor.getColumnIndex("Date"));
+	// String[] strarr = date.split(" ");
+	// this.date.add(strarr[0] + " "
+	// + drawable.getMonthName(strarr[1]) + " ("
+	// + mCursor.getString(mCursor.getColumnIndex("Other1"))
+	// + ")");
+	// matchURL.add(mCursor.getString(mCursor
+	// .getColumnIndex("MatchUrl")));
+	//
+	// } while (mCursor.moveToNext());
+	//
+	// // Log.d( "HomeScreen-populateGallery", " Total items in A added : "
+	// // + teamA.size() );
+	// gallery.setAdapter(mAdapter);
+	//
+	// if (mCursor.getCount() > 1) {
+	// mDotsLayout.setVisibility(View.VISIBLE);
+	// counter1.setBackgroundResource(R.drawable.countershape_selected);
+	// counter2.setBackgroundResource(R.drawable.countershape);
+	// } else
+	// mDotsLayout.setVisibility(View.GONE);
+	//
+	// gallery.setOnItemClickListener(new OnItemClickListener() {
+	// public void onItemClick(AdapterView parent, View v,
+	// int position, long id) {
+	// TextView txtTeamA = (TextView) v
+	// .findViewById(R.id.textview_stadium);
+	// TextView txtTeamB = (TextView) v
+	// .findViewById(R.id.textview_match);
+	// TextView txtMatchURL = (TextView) v
+	// .findViewById(R.id.textview_date);
+	//
+	// String szTeamA = txtTeamA.getTag().toString();
+	// String szTeamB = txtTeamB.getTag().toString();
+	// String szMatchURL = txtMatchURL.getTag().toString();
+	//
+	// Intent scoreIntent = new Intent(HomeScreen.this,
+	// LiveLayout.class);
+	// scoreIntent.putExtra("match", szTeamA + "||" + szTeamB
+	// + "||" + szMatchURL);
+	// startActivity(scoreIntent);
+	// }
+	// });
+	//
+	// gallery.setOnItemSelectedListener(new
+	// AdapterView.OnItemSelectedListener() {
+	// @Override
+	// public void onItemSelected(AdapterView adapterView, View view,
+	// int pos, long l) {
+	// if (mDotsLayout.getVisibility() == View.VISIBLE) {
+	// if (pos == 0) {
+	// counter1.setBackgroundResource(R.drawable.countershape_selected);
+	// counter2.setBackgroundResource(R.drawable.countershape);
+	// } else {
+	// counter2.setBackgroundResource(R.drawable.countershape_selected);
+	// counter1.setBackgroundResource(R.drawable.countershape);
+	// }
+	// }
+	// }
+	//
+	// @Override
+	// public void onNothingSelected(AdapterView adapterView) {
+	//
+	// }
+	// });
+	//
+	// }
+	//
+	// }
 
 	@Override
 	protected void onPause() {
@@ -339,88 +339,90 @@ public class HomeScreen extends Activity {
 			Utils.getDB(this);
 		// mCursor = Utils.db.query( "schedule", null, null, null, null, null,
 		// null );
-//		mCursor = Utils.db
-//				.query("schedule", null,
-//						"MatchUrl <> '' AND MatchResult == '' ", null, null,
-//						null, null);
-//		mCursor.moveToFirst();
-//		mAdapter = null;
-//		mAdapter = new MyAdapter(this);
-		//populateGallery();
+		// mCursor = Utils.db
+		// .query("schedule", null,
+		// "MatchUrl <> '' AND MatchResult == '' ", null, null,
+		// null, null);
+		// mCursor.moveToFirst();
+		// mAdapter = null;
+		// mAdapter = new MyAdapter(this);
+		// populateGallery();
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		mCursor.close();
-		mCursor.deactivate();
+		if (mCursor != null) {
+			mCursor.close();
+			mCursor.deactivate();
+		}
 	}
 
-//	public class MyAdapter extends BaseAdapter {
-//		Context context;
-//
-//		MyAdapter(Context c) {
-//			context = c;
-//		}
-//
-//		@Override
-//		public int getCount() {
-//			// TODO Auto-generated method stub
-//			return teamA.size();
-//		}
-//
-//		@Override
-//		public Object getItem(int position) {
-//			// TODO Auto-generated method stub
-//			return teamA.toArray()[position];
-//		}
-//
-//		@Override
-//		public long getItemId(int position) {
-//			// TODO Auto-generated method stub
-//			return position;
-//		}
-//
-//		@Override
-//		public View getView(int position, View convertView, ViewGroup parent) {
-//			// TODO Auto-generated method stub
-//
-//			// View rowView = LayoutInflater.from( parent.getContext()
-//			// ).inflate( R.layout.galleryitem, null );
-//			View rowView = LayoutInflater.from(parent.getContext()).inflate(
-//					R.layout.galleryitem_new, null);
-//			ImageView flag1 = (ImageView) rowView
-//					.findViewById(R.id.galleryitem_flag1);
-//			ImageView flag2 = (ImageView) rowView
-//					.findViewById(R.id.galleryitem_flag2);
-//
-//			TextView txtstadium = (TextView) rowView
-//					.findViewById(R.id.textview_stadium);
-//			TextView txtmatch = (TextView) rowView
-//					.findViewById(R.id.textview_match);
-//			TextView txtdate = (TextView) rowView
-//					.findViewById(R.id.textview_date);
-//			TextView txttime = (TextView) rowView
-//					.findViewById(R.id.textview_time);
-//			TextView txtgroup = (TextView) rowView
-//					.findViewById(R.id.textview_group);
-//
-//			txtstadium.setText(stadium.get(position).toString());
-//			txtstadium.setTag(teamA.get(position).toString());
-//			txtmatch.setText(match.get(position).toString());
-//			txtmatch.setTag(teamB.get(position).toString());
-//			txtdate.setText(date.get(position).toString());
-//			txtdate.setTag(matchURL.get(position).toString());
-//			txttime.setText(time.get(position).toString());
-//			txtgroup.setText(group.get(position).toString());
-//			flag1.setImageResource(drawable.getIcon(teamA.get(position)
-//					.toString()));
-//			flag2.setImageResource(drawable.getIcon(teamB.get(position)
-//					.toString()));
-//			return rowView;
-//		}
-//	}
+	// public class MyAdapter extends BaseAdapter {
+	// Context context;
+	//
+	// MyAdapter(Context c) {
+	// context = c;
+	// }
+	//
+	// @Override
+	// public int getCount() {
+	// // TODO Auto-generated method stub
+	// return teamA.size();
+	// }
+	//
+	// @Override
+	// public Object getItem(int position) {
+	// // TODO Auto-generated method stub
+	// return teamA.toArray()[position];
+	// }
+	//
+	// @Override
+	// public long getItemId(int position) {
+	// // TODO Auto-generated method stub
+	// return position;
+	// }
+	//
+	// @Override
+	// public View getView(int position, View convertView, ViewGroup parent) {
+	// // TODO Auto-generated method stub
+	//
+	// // View rowView = LayoutInflater.from( parent.getContext()
+	// // ).inflate( R.layout.galleryitem, null );
+	// View rowView = LayoutInflater.from(parent.getContext()).inflate(
+	// R.layout.galleryitem_new, null);
+	// ImageView flag1 = (ImageView) rowView
+	// .findViewById(R.id.galleryitem_flag1);
+	// ImageView flag2 = (ImageView) rowView
+	// .findViewById(R.id.galleryitem_flag2);
+	//
+	// TextView txtstadium = (TextView) rowView
+	// .findViewById(R.id.textview_stadium);
+	// TextView txtmatch = (TextView) rowView
+	// .findViewById(R.id.textview_match);
+	// TextView txtdate = (TextView) rowView
+	// .findViewById(R.id.textview_date);
+	// TextView txttime = (TextView) rowView
+	// .findViewById(R.id.textview_time);
+	// TextView txtgroup = (TextView) rowView
+	// .findViewById(R.id.textview_group);
+	//
+	// txtstadium.setText(stadium.get(position).toString());
+	// txtstadium.setTag(teamA.get(position).toString());
+	// txtmatch.setText(match.get(position).toString());
+	// txtmatch.setTag(teamB.get(position).toString());
+	// txtdate.setText(date.get(position).toString());
+	// txtdate.setTag(matchURL.get(position).toString());
+	// txttime.setText(time.get(position).toString());
+	// txtgroup.setText(group.get(position).toString());
+	// flag1.setImageResource(drawable.getIcon(teamA.get(position)
+	// .toString()));
+	// flag2.setImageResource(drawable.getIcon(teamB.get(position)
+	// .toString()));
+	// return rowView;
+	// }
+	// }
 
 	private int fetchliveurls() {
 		HttpClient hc;
@@ -654,94 +656,95 @@ public class HomeScreen extends Activity {
 
 	}
 
-//	private class GCMTask extends AsyncTask<Void, Void, Void> {
-//		@Override
-//		protected Void doInBackground(Void... arg0) {
-//			// GCM Start
-//			int build_version = Integer.parseInt(Build.VERSION.SDK);
-//			String regId = "";
-//			if (build_version >= 8) {
-//				GCMRegistrar.checkDevice(HomeScreen.this);
-//				GCMRegistrar.checkManifest(HomeScreen.this);
-//				regId = GCMRegistrar.getRegistrationId(HomeScreen.this);
-//				if (regId.equals("")) {
-//					GCMRegistrar.register(HomeScreen.this, "899727754395");
-//					// Log.d("HomeScreen-GCMRegister()",
-//					// "GCM register call check passed");
-//				} else {
-//					if (!Utils.getIsPushStatusPostedOnServer(HomeScreen.this)) {
-//						String szServer = "http://buyholdsell.in/ipl/add-device-id.php?device_id=";
-//						String szCompleteUrl = szServer + regId + "&salt=";
-//						szCompleteUrl = szCompleteUrl
-//								+ Utils.getMd5Hash("G6derTY" + regId);
-//						try {
-//
-//							if (Utils.getNetworkStatus(HomeScreen.this)) {
-//								// Log.d("HomeScreen", "URL is: " +
-//								// szCompleteUrl);
-//								HttpClient httpclient = new DefaultHttpClient();
-//								HttpPost httppost = new HttpPost(szCompleteUrl);
-//								HttpResponse response = httpclient
-//										.execute(httppost);
-//								String szResponse = inputStreamToString(
-//										response.getEntity().getContent())
-//										.toString();
-//								Log.d("HomeScreen", "Response is :"
-//										+ szResponse);
-//								if (szResponse.equalsIgnoreCase("1"))
-//									Utils.setIsPushStatusPostedOnServer(
-//											HomeScreen.this, true);
-//							} else {
-//								Log.d("HomeScreen", "NETWORK NOT AVAILABLE");
-//								return null;
-//							}
-//						} catch (Exception e) {
-//							// TODO Auto-generated catch block
-//							Log.d("HomeScreen", "EXCEPTION");
-//							e.printStackTrace();
-//						}
-//
-//					}
-//				}
-//			}
-//			// GCM End
-//			return null;
-//		}
-//	}
+	// private class GCMTask extends AsyncTask<Void, Void, Void> {
+	// @Override
+	// protected Void doInBackground(Void... arg0) {
+	// // GCM Start
+	// int build_version = Integer.parseInt(Build.VERSION.SDK);
+	// String regId = "";
+	// if (build_version >= 8) {
+	// GCMRegistrar.checkDevice(HomeScreen.this);
+	// GCMRegistrar.checkManifest(HomeScreen.this);
+	// regId = GCMRegistrar.getRegistrationId(HomeScreen.this);
+	// if (regId.equals("")) {
+	// GCMRegistrar.register(HomeScreen.this, "899727754395");
+	// // Log.d("HomeScreen-GCMRegister()",
+	// // "GCM register call check passed");
+	// } else {
+	// if (!Utils.getIsPushStatusPostedOnServer(HomeScreen.this)) {
+	// String szServer =
+	// "http://buyholdsell.in/ipl/add-device-id.php?device_id=";
+	// String szCompleteUrl = szServer + regId + "&salt=";
+	// szCompleteUrl = szCompleteUrl
+	// + Utils.getMd5Hash("G6derTY" + regId);
+	// try {
+	//
+	// if (Utils.getNetworkStatus(HomeScreen.this)) {
+	// // Log.d("HomeScreen", "URL is: " +
+	// // szCompleteUrl);
+	// HttpClient httpclient = new DefaultHttpClient();
+	// HttpPost httppost = new HttpPost(szCompleteUrl);
+	// HttpResponse response = httpclient
+	// .execute(httppost);
+	// String szResponse = inputStreamToString(
+	// response.getEntity().getContent())
+	// .toString();
+	// Log.d("HomeScreen", "Response is :"
+	// + szResponse);
+	// if (szResponse.equalsIgnoreCase("1"))
+	// Utils.setIsPushStatusPostedOnServer(
+	// HomeScreen.this, true);
+	// } else {
+	// Log.d("HomeScreen", "NETWORK NOT AVAILABLE");
+	// return null;
+	// }
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// Log.d("HomeScreen", "EXCEPTION");
+	// e.printStackTrace();
+	// }
+	//
+	// }
+	// }
+	// }
+	// // GCM End
+	// return null;
+	// }
+	// }
 
-//	private class fetchURLTask extends AsyncTask<Void, Void, String> {
-//		int rowsUpdated = 0;
-//
-//		@Override
-//		protected String doInBackground(Void... arg0) {
-//			try {
-//				rowsUpdated = fetchliveurls();
-//				Utils.isDataMatchURLparsed = true;
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				Utils.isDataMatchURLparsed = false;
-//			}
-//			return "success";
-//		}
-//
-//		@Override
-//		protected void onPostExecute(String result) {
-//			// TODO Auto-generated method stub
-//			super.onPostExecute(result);
-//			if ((rowsUpdated > 0 || Utils.rowUpdatedAfterLiveURLFetch)
-//					&& Utils.currentContext == HomeScreen.this) {
-//				mCursor = Utils.db.query("schedule", null,
-//						"MatchUrl <> '' AND MatchResult == '' ", null, null,
-//						null, null);
-//				mCursor.moveToFirst();
-//				mAdapter = null;
-//				mAdapter = new MyAdapter(HomeScreen.this);
-//				populateGallery();
-//				Utils.rowUpdatedAfterLiveURLFetch = false;
-//			}
-//
-//		}
-//	}
+	// private class fetchURLTask extends AsyncTask<Void, Void, String> {
+	// int rowsUpdated = 0;
+	//
+	// @Override
+	// protected String doInBackground(Void... arg0) {
+	// try {
+	// rowsUpdated = fetchliveurls();
+	// Utils.isDataMatchURLparsed = true;
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// Utils.isDataMatchURLparsed = false;
+	// }
+	// return "success";
+	// }
+	//
+	// @Override
+	// protected void onPostExecute(String result) {
+	// // TODO Auto-generated method stub
+	// super.onPostExecute(result);
+	// if ((rowsUpdated > 0 || Utils.rowUpdatedAfterLiveURLFetch)
+	// && Utils.currentContext == HomeScreen.this) {
+	// mCursor = Utils.db.query("schedule", null,
+	// "MatchUrl <> '' AND MatchResult == '' ", null, null,
+	// null, null);
+	// mCursor.moveToFirst();
+	// mAdapter = null;
+	// mAdapter = new MyAdapter(HomeScreen.this);
+	// populateGallery();
+	// Utils.rowUpdatedAfterLiveURLFetch = false;
+	// }
+	//
+	// }
+	// }
 
 	private void fetchDocs() {
 		networkmanager = new NetworkManager(HomeScreen.this);
