@@ -7,14 +7,15 @@ import java.util.Vector;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +32,7 @@ import android.widget.TextView;
 
 public class Schedule extends Activity implements OnItemClickListener {
 
-	private ListView listViewObj;
+	private static ListView listViewObj;
 	static Cursor m_cursor;
 	static ListAdapter m_adapter;
 	getDrawable drawable;
@@ -48,6 +49,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 	ImageView stadiumImage;
 	ImageView invisibleImge;
 	ImageView backBtnImage;
+	ImageView navigationImage;
 	Dialog listDialog;
 	TextView txtInfo;
 	boolean bSubViewDisplayed;
@@ -109,7 +111,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				bSubViewDisplayed=false;
+				bSubViewDisplayed = false;
 				backBtnImage.setVisibility(View.GONE);
 				invisibleImge.setVisibility(View.GONE);
 
@@ -135,22 +137,45 @@ public class Schedule extends Activity implements OnItemClickListener {
 
 		// Applying font
 		txtSchedule.setTypeface(tf);
-		
-//		txtInfo = (TextView) findViewById(R.id.txtInfo);
-//		txtInfo.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent i = new Intent(Schedule.this, AboutUs.class);
-//				startActivity(i);
-//				
-//			}
-//		});
-		
-		//AppRater.app_launched( this );
+
+		// txtInfo = (TextView) findViewById(R.id.txtInfo);
+		// txtInfo.setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// Intent i = new Intent(Schedule.this, AboutUs.class);
+		// startActivity(i);
+		//
+		// }
+		// });
+
+		// AppRater.app_launched( this );
+		navigationImage = (ImageView) findViewById(R.id.nav);
+		navigationImage.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				callEvent();
+
+			}
+		});
 
 	}
+	
+	MenuDialog menuDialog;
+
+    public void callEvent()
+    {
+
+        // if (menuDialog == null) {
+
+        menuDialog = new MenuDialog( this, "schedule" );
+        // }
+        menuDialog.setCancelable( true );
+        menuDialog.setCanceledOnTouchOutside( true );
+        menuDialog.show();
+    }
 
 	@Override
 	public void onBackPressed() {
@@ -236,6 +261,14 @@ public class Schedule extends Activity implements OnItemClickListener {
 		m_cursor = db.rawQuery("select * from schedule", null);
 
 	}
+	
+	 @Override
+	    public boolean onKeyUp( int keyCode, KeyEvent event )
+	    {
+	        if( keyCode == KeyEvent.KEYCODE_MENU )
+	            callEvent();
+	        return super.onKeyUp( keyCode, event );
+	    }
 
 	@Override
 	protected void onResume() {
@@ -451,6 +484,16 @@ public class Schedule extends Activity implements OnItemClickListener {
 		listDialog.dismiss();
 
 	}
+	
+	public static void reloadView( final Context context )
+    {
+		Utils.getDB( context );
+        m_cursor = Utils.db.rawQuery( "select * from schedule", null );
+        if( listViewObj!= null )
+        {
+        	listViewObj.invalidate();
+        }
+    }
 
 	public void fillScheduleList(Cursor cur) {
 
@@ -522,4 +565,6 @@ public class Schedule extends Activity implements OnItemClickListener {
 				R.layout.cric_schedule_item, team_data);
 
 	}
+	
+	
 }

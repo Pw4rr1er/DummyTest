@@ -63,9 +63,10 @@ public class overrideAdapter extends SimpleAdapter {
 				row5.setTextColor(0xff69D2E7);
 				row6.setTextColor(0xff69D2E7);
 				row7.setTextColor(0xff69D2E7);
+				view.setBackgroundColor(colors[0]);
 
 			}
-
+			
 			if (position != 0) {
 				int colorPos = position % colors.length;
 				view.setBackgroundColor(colors[colorPos]);

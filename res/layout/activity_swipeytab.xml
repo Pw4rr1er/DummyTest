@@ -17,49 +17,57 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:swipeytabs="http://schemas.android.com/apk/res/com.appndroid.ipl2013"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
     <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/rel1"
-                android:layout_width="fill_parent"
-                android:layout_height="45.0dip"
-                android:background="@drawable/header_bg"
-                android:orientation="horizontal" >
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:background="@drawable/header_bg"
+        android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:ellipsize="marquee"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center"
-                    android:maxWidth="250.0dip"
-                    android:scrollHorizontally="true"
-                    android:text="Stats"
-                    android:textColor="#69D2E7"
-                    android:textSize="24.0sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:maxWidth="250.0dip"
+            android:scrollHorizontally="true"
+            android:text="Stats"
+            android:textColor="#69D2E7"
+            android:textSize="24.0sp"
+            android:textStyle="bold" />
 
-	<com.appndroid.ipl2013.SwipeyTabs
-		android:id="@+id/swipeytabs"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		swipeytabs:bottomBarColor="#ff22d4d4"
-		swipeytabs:bottomBarHeight="2dip"
-		swipeytabs:tabIndicatorHeight="3dip"
- 		android:background="#FF333333"
- 		android:layout_below="@+id/rel1"/>
-		    
-     <com.appndroid.ipl2013.MultipleScrollViewPager
+        <ImageView
+            android:id="@+id/nav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/navigationunselected" />
+    </RelativeLayout>
+
+    <com.appndroid.ipl2013.SwipeyTabs
+        android:id="@+id/swipeytabs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel1"
+        android:background="#FF333333"
+        swipeytabs:bottomBarColor="#ff22d4d4"
+        swipeytabs:bottomBarHeight="2dip"
+        swipeytabs:tabIndicatorHeight="3dip" />
+
+    <com.appndroid.ipl2013.MultipleScrollViewPager
         android:id="@+id/flipper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/swipeytabs"
         android:background="@android:color/transparent" />
-    
+
 </RelativeLayout>

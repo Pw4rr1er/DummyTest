@@ -29,6 +29,19 @@ public class SplashScreen extends Activity {
 		setContentView(R.layout.spalsh_screen);
 		// HideActionBar();
 		
+		if( !Utils.getDBDeleted( this ) )
+        {
+            try
+            {
+                this.deleteDatabase( "ipl2013.db" );
+                Utils.setDBDeleted( this, true );
+            }
+            catch( Exception e )
+            {
+                e.printStackTrace();
+            }
+        }
+		
 		//creating database
 		new CopyDBTask().execute();
 

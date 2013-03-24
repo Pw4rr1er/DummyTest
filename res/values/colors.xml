@@ -16,7 +16,7 @@
     <color name="Team_ranking_text_simple">#ffb8b8b8</color>
     <color name="Team_ranking_text_fav">#ffa66c00</color>
     <color name="Common_background">#ff889e00</color>
-    <color name="Start_act_elements_pressed">#ffe4f482</color>
+    <color name="Start_act_elements_pressed">#ff89E2E7</color>
     <color name="Start_act_elements">#00889e00</color>
     <color name="btn_dialog_disabled">#ffffffff</color>
     <color name="btn_dialog_enabled">#ff111111</color>

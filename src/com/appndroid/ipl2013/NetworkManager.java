@@ -437,7 +437,7 @@ public class NetworkManager {
 						"EXCEPTION IS :: " + e.getMessage());
 				e.printStackTrace();
 			}
-			// Schedule.reloadView( mContext );
+			 Schedule.reloadView( mContext );
 		}
 
 		public void setTaskParams(int nCommandType) {

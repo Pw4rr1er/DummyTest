@@ -29,16 +29,23 @@
             android:textSize="24.0sp"
             android:textStyle="bold" />
 
-<!--         <TextView -->
-<!--             android:id="@+id/txtInfo" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="fill_parent" -->
-<!--             android:layout_alignBaseline="@+id/title" -->
-<!--             android:layout_alignParentRight="true" -->
-<!--             android:layout_centerVertical="true" -->
-<!--             android:layout_marginRight="10dp" -->
-<!--             android:text="INFO" -->
-<!--             android:textColor="#FFFFFFFF" /> -->
+        <!-- <TextView -->
+        <!-- android:id="@+id/txtInfo" -->
+        <!-- android:layout_width="wrap_content" -->
+        <!-- android:layout_height="fill_parent" -->
+        <!-- android:layout_alignBaseline="@+id/title" -->
+        <!-- android:layout_alignParentRight="true" -->
+        <!-- android:layout_centerVertical="true" -->
+        <!-- android:layout_marginRight="10dp" -->
+        <!-- android:text="INFO" -->
+        <!-- android:textColor="#FFFFFFFF" /> -->
+
+        <ImageView
+            android:id="@+id/nav"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/navigationunselected" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -135,7 +142,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/stadiumbtn" />
-
         </RelativeLayout>
     </LinearLayout>
 

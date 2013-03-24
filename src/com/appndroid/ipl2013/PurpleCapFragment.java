@@ -75,7 +75,7 @@ public class PurpleCapFragment extends Fragment {
 		db = getActivity().openOrCreateDatabase("ipl2013.db",
 				SQLiteDatabase.CREATE_IF_NECESSARY, null);
 		
-		from = new String[] { "Player", "Wkts", "BBI", "M", "SR", "Team" };
+		from = new String[] { "Player", "Wkts", "BBI", "SR", "M", "Team" };
 
 		ptList = new fillList(from);
 		Cursor cur = db.rawQuery("select * from PurpleCap", null);

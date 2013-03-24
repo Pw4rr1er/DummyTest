@@ -27,10 +27,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SwipeyTabsSampleActivity extends FragmentActivity {
@@ -42,6 +44,7 @@ public class SwipeyTabsSampleActivity extends FragmentActivity {
 	private MultipleScrollViewPager mViewPager;
 	List<Fragment> mfragmentList;
 	private Bundle bundle;
+	ImageView navigationImage;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,15 @@ public class SwipeyTabsSampleActivity extends FragmentActivity {
 		TextView txtHead = (TextView) findViewById(R.id.title);
 		Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
 		txtHead.setTypeface(tf);
+		navigationImage = (ImageView) findViewById(R.id.nav);
+		navigationImage.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				callEvent();
+
+			}
+		});
 
 		mViewPager = (MultipleScrollViewPager) findViewById(R.id.flipper);
 		mTabs = (SwipeyTabs) findViewById(R.id.swipeytabs);
@@ -86,6 +98,28 @@ public class SwipeyTabsSampleActivity extends FragmentActivity {
 		mViewPager.setCurrentItem(0);
 		mViewPager.setOffscreenPageLimit(2);
 	}
+	
+	MenuDialog menuDialog;
+
+    public void callEvent()
+    {
+
+        // if (menuDialog == null) {
+
+        menuDialog = new MenuDialog( this, "standings" );
+        // }
+        menuDialog.setCancelable( true );
+        menuDialog.setCanceledOnTouchOutside( true );
+        menuDialog.show();
+    }
+    
+    @Override
+    public boolean onKeyUp( int keyCode, KeyEvent event )
+    {
+        if( keyCode == KeyEvent.KEYCODE_MENU )
+            callEvent();
+        return super.onKeyUp( keyCode, event );
+    }
 
 	private class SwipeyTabsPagerAdapter extends FragmentPagerAdapter implements
 			SwipeyTabsAdapter {

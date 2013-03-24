@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 public class TeamList extends Activity {
 	ImageView headerClick;
 	ImageView img1, img2, img3, img4, img5, img6, img7, img8, img9;
+	ImageView navigationImage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +94,41 @@ public class TeamList extends Activity {
 				SwitchScreen(9);
 			}
 		});
+		
+		navigationImage = (ImageView) findViewById(R.id.nav);
+		navigationImage.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				callEvent();
+
+			}
+		});
 
 	}
 
+	MenuDialog menuDialog;
+
+    public void callEvent()
+    {
+
+        // if (menuDialog == null) {
+
+        menuDialog = new MenuDialog( this, "teams" );
+        // }
+        menuDialog.setCancelable( true );
+        menuDialog.setCanceledOnTouchOutside( true );
+        menuDialog.show();
+    }
+    
+    @Override
+    public boolean onKeyUp( int keyCode, KeyEvent event )
+    {
+        if( keyCode == KeyEvent.KEYCODE_MENU )
+            callEvent();
+        return super.onKeyUp( keyCode, event );
+    }
+    
 	public void SwitchScreen(int teamNumber) {
 		Intent teamlistIntent = new Intent(TeamList.this, FlipperTeamList.class);
 		teamlistIntent.putExtra("value", teamNumber);
