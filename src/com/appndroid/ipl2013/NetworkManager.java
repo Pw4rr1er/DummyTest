@@ -371,7 +371,7 @@ public class NetworkManager {
 
 							ContentValues values = new ContentValues();
 
-							values.put("_id", orangeCapId);
+							//values.put("_id", orangeCapId);
 							values.put("Player", Player);
 							values.put("Runs", Runs);
 							values.put("HS", HS);
