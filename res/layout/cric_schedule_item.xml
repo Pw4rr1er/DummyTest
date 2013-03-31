@@ -12,6 +12,15 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/transparent_background"
         android:layout_marginBottom="5dp" >
+        
+        <TextView
+            android:id="@+id/txtmatchID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="a"
+            android:visibility="gone"
+            android:textColor="#FFFFFFFF" />
 
         <TextView
             android:id="@+id/txtDateTime"

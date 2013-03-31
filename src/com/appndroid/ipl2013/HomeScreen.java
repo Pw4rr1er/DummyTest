@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.security.cert.LDAPCertStoreParameters;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,10 +49,11 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeScreen extends Activity {
 
-	LinearLayout scheduleClick, standingsClick, aboutClick, teamsClick;
+	LinearLayout scheduleClick, standingsClick, aboutClick, teamsClick,settings;
 	ImageView mainIcon;
 	WebView webview;
 	Context mcontext;
@@ -72,7 +74,7 @@ public class HomeScreen extends Activity {
 	LinearLayout mDotsLayout;
 	TextView counter1;
 	TextView counter2;
-
+	
 	private boolean m_isWorldCup = false;
 	private String currentTag;
 	int m_xmlTagId = 0;
@@ -95,6 +97,17 @@ public class HomeScreen extends Activity {
 		Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
 		txtTitle.setTypeface(tf);
 
+		settings = (LinearLayout) findViewById(R.id.llSettings);
+		settings.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent scoreIntent = new Intent(HomeScreen.this,
+						Settings.class);
+				startActivity(scoreIntent);
+
+			}
+		});
 		// new GCMTask().execute();
 
 		// WebView wv = (WebView) findViewById(R.id.browser_home);
@@ -104,16 +117,15 @@ public class HomeScreen extends Activity {
 		// "<html><body style='margin:0;padding:0;'><script type='text/javascript' src='http://ad.leadboltads.net/show_app_ad.js?section_id=475192381'></script></body></html>";
 		// wv.loadData(html, "text/html", "utf-8");
 
-		// if( !Utils.isDataMatchURLparsed )
-		// {
-		// new fetchURLTask().execute();
-		// }
-		// gallery = (Gallery) findViewById( R.id.home_gallery );
-		// mAdapter = new MyAdapter( this );
-		// mDotsLayout = (LinearLayout) findViewById( R.id.dotsLayout );
-		// mDotsLayout.setVisibility( View.GONE );
-		// counter1 = (TextView) findViewById( R.id.counter1 );
-		// counter2 = (TextView) findViewById( R.id.counter2 );
+		if (!Utils.isDataMatchURLparsed) {
+			new fetchURLTask().execute();
+		}
+		gallery = (Gallery) findViewById(R.id.home_gallery);
+		mAdapter = new MyAdapter(this);
+		mDotsLayout = (LinearLayout) findViewById(R.id.dotsLayout);
+		mDotsLayout.setVisibility(View.GONE);
+		counter1 = (TextView) findViewById(R.id.counter1);
+		counter2 = (TextView) findViewById(R.id.counter2);
 		drawable = new getDrawable();
 
 		scheduleClick = (LinearLayout) findViewById(R.id.ll_schedule);
@@ -188,8 +200,8 @@ public class HomeScreen extends Activity {
 
 		AppRater.app_launched(this);
 
-		if (!Utils.isDocsFetched)
-			fetchDocs();
+		 if (!Utils.isDocsFetched)
+		 fetchDocs();
 	}
 
 	// private StringBuilder inputStreamToString(InputStream content)
@@ -205,124 +217,124 @@ public class HomeScreen extends Activity {
 	// return total;
 	// }
 
-	// private void populateGallery() {
-	// // TODO Auto-generated method stub
-	// if (mCursor.getCount() > 0) {
-	// TextView txt = (TextView) findViewById(R.id.txtTodaysMatches);
-	// txt.setVisibility(View.VISIBLE);
-	// teamA.clear();
-	// teamB.clear();
-	// match.clear();
-	// stadium.clear();
-	// date.clear();
-	// time.clear();
-	// group.clear();
-	// matchURL.clear();
-	// do {
-	// String szTeamA = mCursor.getString(mCursor
-	// .getColumnIndex("TeamA"));
-	// String szTeamB = mCursor.getString(mCursor
-	// .getColumnIndex("TeamB"));
-	// teamA.add(szTeamA);
-	// teamB.add(szTeamB);
-	// stadium.add(mCursor.getString(mCursor.getColumnIndex("Stadium")));
-	// group.add(mCursor.getString(mCursor.getColumnIndex("gang")));
-	// match.add(drawable.getTeamShortCode(szTeamA) + " vs "
-	// + drawable.getTeamShortCode(szTeamB));
-	//
-	// String time = mCursor.getString(mCursor.getColumnIndex("GMT"));
-	// SharedPreferences sp = PreferenceManager
-	// .getDefaultSharedPreferences(HomeScreen.this);
-	// int milli_offset = sp.getInt("offset", 0);
-	// SimpleDateFormat df1 = new SimpleDateFormat("HH:mm:ss");
-	// Date d = null;
-	// try {
-	// d = df1.parse(time + ":00");
-	// } catch (Exception e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// Long lngTime = d.getTime();
-	// lngTime += (milli_offset);
-	// Date d2 = new Date(lngTime);
-	// int minutes = d2.getMinutes();
-	// String min;
-	// if (minutes == 0)
-	// min = "00";
-	// else
-	// min = String.valueOf(minutes);
-	// this.time.add(time + " GMT / " + d2.getHours() + ":" + min
-	// + " Local");
-	//
-	// String date = mCursor.getString(mCursor.getColumnIndex("Date"));
-	// String[] strarr = date.split(" ");
-	// this.date.add(strarr[0] + " "
-	// + drawable.getMonthName(strarr[1]) + " ("
-	// + mCursor.getString(mCursor.getColumnIndex("Other1"))
-	// + ")");
-	// matchURL.add(mCursor.getString(mCursor
-	// .getColumnIndex("MatchUrl")));
-	//
-	// } while (mCursor.moveToNext());
-	//
-	// // Log.d( "HomeScreen-populateGallery", " Total items in A added : "
-	// // + teamA.size() );
-	// gallery.setAdapter(mAdapter);
-	//
-	// if (mCursor.getCount() > 1) {
-	// mDotsLayout.setVisibility(View.VISIBLE);
-	// counter1.setBackgroundResource(R.drawable.countershape_selected);
-	// counter2.setBackgroundResource(R.drawable.countershape);
-	// } else
-	// mDotsLayout.setVisibility(View.GONE);
-	//
-	// gallery.setOnItemClickListener(new OnItemClickListener() {
-	// public void onItemClick(AdapterView parent, View v,
-	// int position, long id) {
-	// TextView txtTeamA = (TextView) v
-	// .findViewById(R.id.textview_stadium);
-	// TextView txtTeamB = (TextView) v
-	// .findViewById(R.id.textview_match);
-	// TextView txtMatchURL = (TextView) v
-	// .findViewById(R.id.textview_date);
-	//
-	// String szTeamA = txtTeamA.getTag().toString();
-	// String szTeamB = txtTeamB.getTag().toString();
-	// String szMatchURL = txtMatchURL.getTag().toString();
-	//
-	// Intent scoreIntent = new Intent(HomeScreen.this,
-	// LiveLayout.class);
-	// scoreIntent.putExtra("match", szTeamA + "||" + szTeamB
-	// + "||" + szMatchURL);
-	// startActivity(scoreIntent);
-	// }
-	// });
-	//
-	// gallery.setOnItemSelectedListener(new
-	// AdapterView.OnItemSelectedListener() {
-	// @Override
-	// public void onItemSelected(AdapterView adapterView, View view,
-	// int pos, long l) {
-	// if (mDotsLayout.getVisibility() == View.VISIBLE) {
-	// if (pos == 0) {
-	// counter1.setBackgroundResource(R.drawable.countershape_selected);
-	// counter2.setBackgroundResource(R.drawable.countershape);
-	// } else {
-	// counter2.setBackgroundResource(R.drawable.countershape_selected);
-	// counter1.setBackgroundResource(R.drawable.countershape);
-	// }
-	// }
-	// }
-	//
-	// @Override
-	// public void onNothingSelected(AdapterView adapterView) {
-	//
-	// }
-	// });
-	//
-	// }
-	//
-	// }
+	private void populateGallery() {
+		// TODO Auto-generated method stub
+		if (mCursor.getCount() > 0) {
+			TextView txt = (TextView) findViewById(R.id.txtTodaysMatches);
+			txt.setVisibility(View.VISIBLE);
+			teamA.clear();
+			teamB.clear();
+			match.clear();
+			stadium.clear();
+			date.clear();
+			time.clear();
+			group.clear();
+			matchURL.clear();
+			do {
+				String szTeamA = mCursor.getString(mCursor
+						.getColumnIndex("TeamA"));
+				String szTeamB = mCursor.getString(mCursor
+						.getColumnIndex("TeamB"));
+				teamA.add(szTeamA);
+				teamB.add(szTeamB);
+				stadium.add(mCursor.getString(mCursor.getColumnIndex("Stadium"))
+						+ " , "
+						+ mCursor.getString(mCursor.getColumnIndex("Venue")));
+
+				String strDt = mCursor
+						.getString(mCursor.getColumnIndex("Date")).trim();
+				String[] strarr = strDt.split(" ");
+				if (strarr[0].startsWith("0")) {
+					strarr[0] = strarr[0].replace("0", "");
+				}
+
+				String strDate = drawable.getWeekShortname(mCursor.getString(
+						mCursor.getColumnIndex("Day")).trim())
+						+ " , "
+						+ strarr[0]
+						+ " "
+						+ drawable.getMonthName(strarr[1])
+						+ " "
+						+ strarr[2].replace("2013", "13")
+						+ "   "
+						+ mCursor.getString(mCursor.getColumnIndex("IST"))
+								.trim() + " IST";
+				this.time.add(strDate);
+
+				// String date =
+				// mCursor.getString(mCursor.getColumnIndex("Date"));
+				// String[] strarr = date.split(" ");
+				// this.date.add(strarr[0] + " "
+				// + drawable.getMonthName(strarr[1]) + " ("
+				// + mCursor.getString(mCursor.getColumnIndex("Other1"))
+				// + ")");
+				matchURL.add(mCursor.getString(mCursor.getColumnIndex("Other1")));
+
+			} while (mCursor.moveToNext());
+
+			// Log.d( "HomeScreen-populateGallery", " Total items in A added : "
+			// + teamA.size() );
+			gallery.setAdapter(mAdapter);
+
+			if (mCursor.getCount() > 1) {
+				mDotsLayout.setVisibility(View.VISIBLE);
+				counter1.setBackgroundResource(R.drawable.countershape_selected);
+				counter2.setBackgroundResource(R.drawable.countershape);
+			} else
+				mDotsLayout.setVisibility(View.GONE);
+
+			gallery.setOnItemClickListener(new OnItemClickListener() {
+				public void onItemClick(AdapterView parent, View v,
+						int position, long id) {
+					TextView txtTeamA = (TextView) v
+							.findViewById(R.id.txtTeamA);
+					TextView txtTeamB = (TextView) v
+							.findViewById(R.id.txtTeamB);
+					TextView txtMatchURL = (TextView) v
+							.findViewById(R.id.txtDateTime);
+
+					String szTeamA = txtTeamA.getTag().toString();
+					String szTeamB = txtTeamB.getTag().toString();
+					String szMatchURL = txtMatchURL.getTag().toString();
+					szMatchURL = "http://sifyscores.cricbuzz.com/data/2013/2013_BAN_SL/SL_BAN_MAR31/scores.xml";
+
+					Toast.makeText(HomeScreen.this,
+							szTeamA + "||" + szTeamB + "||" + szMatchURL,
+							Toast.LENGTH_LONG).show();
+
+					Intent scoreIntent = new Intent(HomeScreen.this,
+							LiveScore.class);
+					scoreIntent.putExtra("match", szTeamA + "||" + szTeamB
+							+ "||" + szMatchURL);
+					startActivity(scoreIntent);
+
+				}
+			});
+
+			gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView adapterView, View view,
+						int pos, long l) {
+					if (mDotsLayout.getVisibility() == View.VISIBLE) {
+						if (pos == 0) {
+							counter1.setBackgroundResource(R.drawable.countershape_selected);
+							counter2.setBackgroundResource(R.drawable.countershape);
+						} else {
+							counter2.setBackgroundResource(R.drawable.countershape_selected);
+							counter1.setBackgroundResource(R.drawable.countershape);
+						}
+					}
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView adapterView) {
+
+				}
+			});
+
+		}
+
+	}
 
 	@Override
 	protected void onPause() {
@@ -337,16 +349,14 @@ public class HomeScreen extends Activity {
 		super.onResume();
 		if (Utils.db == null)
 			Utils.getDB(this);
-		// mCursor = Utils.db.query( "schedule", null, null, null, null, null,
-		// null );
-		// mCursor = Utils.db
-		// .query("schedule", null,
-		// "MatchUrl <> '' AND MatchResult == '' ", null, null,
-		// null, null);
-		// mCursor.moveToFirst();
-		// mAdapter = null;
-		// mAdapter = new MyAdapter(this);
-		// populateGallery();
+		mCursor = Utils.db
+				.query("schedule", null, null, null, null, null, null);
+		mCursor = Utils.db.query("schedule", null,
+				"Other1 <> '' AND MatchResult == '' ", null, null, null, null);
+		mCursor.moveToFirst();
+		mAdapter = null;
+		mAdapter = new MyAdapter(this);
+		populateGallery();
 	}
 
 	@Override
@@ -359,70 +369,61 @@ public class HomeScreen extends Activity {
 		}
 	}
 
-	// public class MyAdapter extends BaseAdapter {
-	// Context context;
-	//
-	// MyAdapter(Context c) {
-	// context = c;
-	// }
-	//
-	// @Override
-	// public int getCount() {
-	// // TODO Auto-generated method stub
-	// return teamA.size();
-	// }
-	//
-	// @Override
-	// public Object getItem(int position) {
-	// // TODO Auto-generated method stub
-	// return teamA.toArray()[position];
-	// }
-	//
-	// @Override
-	// public long getItemId(int position) {
-	// // TODO Auto-generated method stub
-	// return position;
-	// }
-	//
-	// @Override
-	// public View getView(int position, View convertView, ViewGroup parent) {
-	// // TODO Auto-generated method stub
-	//
-	// // View rowView = LayoutInflater.from( parent.getContext()
-	// // ).inflate( R.layout.galleryitem, null );
-	// View rowView = LayoutInflater.from(parent.getContext()).inflate(
-	// R.layout.galleryitem_new, null);
-	// ImageView flag1 = (ImageView) rowView
-	// .findViewById(R.id.galleryitem_flag1);
-	// ImageView flag2 = (ImageView) rowView
-	// .findViewById(R.id.galleryitem_flag2);
-	//
-	// TextView txtstadium = (TextView) rowView
-	// .findViewById(R.id.textview_stadium);
-	// TextView txtmatch = (TextView) rowView
-	// .findViewById(R.id.textview_match);
-	// TextView txtdate = (TextView) rowView
-	// .findViewById(R.id.textview_date);
-	// TextView txttime = (TextView) rowView
-	// .findViewById(R.id.textview_time);
-	// TextView txtgroup = (TextView) rowView
-	// .findViewById(R.id.textview_group);
-	//
-	// txtstadium.setText(stadium.get(position).toString());
-	// txtstadium.setTag(teamA.get(position).toString());
-	// txtmatch.setText(match.get(position).toString());
-	// txtmatch.setTag(teamB.get(position).toString());
-	// txtdate.setText(date.get(position).toString());
-	// txtdate.setTag(matchURL.get(position).toString());
-	// txttime.setText(time.get(position).toString());
-	// txtgroup.setText(group.get(position).toString());
-	// flag1.setImageResource(drawable.getIcon(teamA.get(position)
-	// .toString()));
-	// flag2.setImageResource(drawable.getIcon(teamB.get(position)
-	// .toString()));
-	// return rowView;
-	// }
-	// }
+	public class MyAdapter extends BaseAdapter {
+		Context context;
+
+		MyAdapter(Context c) {
+			context = c;
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return teamA.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return teamA.toArray()[position];
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+
+			View rowView = LayoutInflater.from(parent.getContext()).inflate(
+					R.layout.cric_schedule_item, null);
+			ImageView flag1 = (ImageView) rowView.findViewById(R.id.imgTeamA);
+			ImageView flag2 = (ImageView) rowView.findViewById(R.id.imgTeamB);
+
+			TextView txtstadium = (TextView) rowView
+					.findViewById(R.id.txtStadium);
+			TextView txtTeamA = (TextView) rowView.findViewById(R.id.txtTeamA);
+			TextView txtTeamB = (TextView) rowView.findViewById(R.id.txtTeamB);
+			TextView txtdate = (TextView) rowView
+					.findViewById(R.id.txtDateTime);
+
+			txtdate.setText(time.get(position).toString());
+			txtdate.setTag(matchURL.get(position).toString());
+			flag1.setImageResource(drawable.getIcon(teamA.get(position)
+					.toString()));
+			txtTeamA.setText(teamA.get(position).toString());
+			txtTeamA.setTag(teamA.get(position).toString());
+			txtTeamB.setText(teamB.get(position).toString());
+			txtTeamB.setTag(teamB.get(position).toString());
+			txtstadium.setText(stadium.get(position).toString());
+			flag2.setImageResource(drawable.getIcon(teamB.get(position)
+					.toString()));
+			return rowView;
+		}
+	}
 
 	private int fetchliveurls() {
 		HttpClient hc;
@@ -444,15 +445,16 @@ public class HomeScreen extends Activity {
 				buffer.append(new String(b, 0, n));
 			}
 			str = buffer.toString();
-			// System.out.println(str);
+			System.out.println(str);
 
 			str = str.replace("\n", "");
 			str = str.replace("\t", "");
-			// str="<matches><match><seriesName>England in Sri Lanka 2012</seriesName><team1>Sri Lanka</team1><team2>England</team2><startdate>03 04 2012</startdate><enddate>07 04 2012</enddate><type>TEST</type><scores-url>http://sifyscores.cricbuzz.com/data/2012/2012_SL_ENG/SL_ENG_APR03_APR07/scores.xml</scores-url><full-commentary-url>http://sifyscores.cricbuzz.com/data/2012/2012_SL_ENG/SL_ENG_APR03_APR07/full-commentary.xml</full-commentary-url><squads-url>http://sifyscores.cricbuzz.com/data/2012/2012_SL_ENG/SL_ENG_APR03_APR07/squads.xml</squads-url><highlights-url>http://sifyscores.cricbuzz.com/data/2012/2012_SL_ENG/SL_ENG_APR03_APR07/highlights.xml</highlights-url><graphs-url>http://sifyscores.cricbuzz.com/data/2012/2012_SL_ENG/SL_ENG_APR03_APR07/graphs.xml</graphs-url><series-statistics-url>http://webclient.cricbuzz.com/statistics/series/xml/2083</series-statistics-url></match><match><seriesName>Indian Premier League 2012</seriesName><team1>Kolkata Knight Riders</team1><team2>Delhi Daredevils</team2><startdate>05 04 2012</startdate><enddate>05 04 2012</enddate><type>T20</type><scores-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/scores.xml</scores-url><full-commentary-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/full-commentary.xml</full-commentary-url><squads-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/squads.xml</squads-url><highlights-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/highlights.xml</highlights-url><graphs-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/graphs.xml</graphs-url><series-statistics-url>http://webclient.cricbuzz.com/statistics/series/xml/2115</series-statistics-url></match><match><seriesName>Indian Premier League 2012</seriesName><team1>Chennai Super Kings</team1><team2>Mumbai Indians</team2><startdate>05 04 2012</startdate><enddate>05 04 2012</enddate><type>T20</type><scores-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/scores.xml</scores-url><full-commentary-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/full-commentary.xml</full-commentary-url><squads-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/squads.xml</squads-url><highlights-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/highlights.xml</highlights-url><graphs-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/graphs.xml</graphs-url><series-statistics-url>http://webclient.cricbuzz.com/statistics/series/xml/2115</series-statistics-url></match></matches>";
+			//str = "<matches><match><seriesName>Indian Premier League 2012</seriesName><team1>Kolkata Knight Riders</team1><team2>Delhi Daredevils</team2><startdate>03 04 2013</startdate><enddate>03 04 2013</enddate><type>T20</type><scores-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/scores.xml</scores-url><full-commentary-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/full-commentary.xml</full-commentary-url><squads-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/squads.xml</squads-url><highlights-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/highlights.xml</highlights-url><graphs-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/KOL_DEL_APR05/graphs.xml</graphs-url><series-statistics-url>http://webclient.cricbuzz.com/statistics/series/xml/2115</series-statistics-url></match><match><seriesName>Indian Premier League 2012</seriesName><team1>Chennai Super Kings</team1><team2>Mumbai Indians</team2><startdate>06 04 2013</startdate><enddate>06 04 2013</enddate><type>T20</type><scores-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/scores.xml</scores-url><full-commentary-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/full-commentary.xml</full-commentary-url><squads-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/squads.xml</squads-url><highlights-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/highlights.xml</highlights-url><graphs-url>http://sifyscores.cricbuzz.com/data/2012/2012_IPL/CHN_MUM_APR04/graphs.xml</graphs-url><series-statistics-url>http://webclient.cricbuzz.com/statistics/series/xml/2115</series-statistics-url></match></matches>";
 			rowsUpdated = xmlParseMatch(str);
 		} catch (SocketException e) {
 
 		} catch (UnknownHostException ex) {
+			ex.printStackTrace();
 
 		} catch (Exception e) {
 
@@ -554,18 +556,17 @@ public class HomeScreen extends Activity {
 				else if (eventType == XmlPullParser.TEXT) {
 					switch (m_xmlTagId) {
 					case 1: // seriesName
-						if (xpp.getText()
-								.equalsIgnoreCase("ICC World T20 2012")) {
+						if (!xpp.getText().equalsIgnoreCase("")) {
 							m_isWorldCup = true;
 						}
 						break;
 					case 2: // team1
 						if (!xpp.getText().equalsIgnoreCase("\n"))
-							teamA = xpp.getText();
+							teamA = drawable.getTeamShortCode(xpp.getText());
 						break;
 					case 3: // team2
 						if (!xpp.getText().equalsIgnoreCase("\n"))
-							teamB = xpp.getText();
+							teamB = drawable.getTeamShortCode(xpp.getText());
 						break;
 					case 4: // scores-url
 						if (!xpp.getText().equalsIgnoreCase("\n"))
@@ -577,7 +578,7 @@ public class HomeScreen extends Activity {
 							// matchesArray.add(teamA + "||" + teamB + "||"
 							// + scoreUrl);
 							ContentValues cvalues = new ContentValues();
-							cvalues.put("MatchUrl", scoreUrl);
+							cvalues.put("Other1", scoreUrl);
 
 							if (Utils.db == null)
 								Utils.getDB(this);
@@ -591,7 +592,7 @@ public class HomeScreen extends Activity {
 								rowsUpdated = Utils.db
 										.update("schedule",
 												cvalues,
-												" ( TeamA = ? OR TeamA = ? ) AND ( TeamB = ? OR TeamB = ? ) AND Date = ? AND MatchUrl = '' ",
+												" ( TeamA = ? OR TeamA = ? ) AND ( TeamB = ? OR TeamB = ? ) AND Date = ? AND Other1 = '' ",
 												new String[] {
 														teamA.replaceAll(" ",
 																""),
@@ -712,39 +713,39 @@ public class HomeScreen extends Activity {
 	// }
 	// }
 
-	// private class fetchURLTask extends AsyncTask<Void, Void, String> {
-	// int rowsUpdated = 0;
-	//
-	// @Override
-	// protected String doInBackground(Void... arg0) {
-	// try {
-	// rowsUpdated = fetchliveurls();
-	// Utils.isDataMatchURLparsed = true;
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// Utils.isDataMatchURLparsed = false;
-	// }
-	// return "success";
-	// }
-	//
-	// @Override
-	// protected void onPostExecute(String result) {
-	// // TODO Auto-generated method stub
-	// super.onPostExecute(result);
-	// if ((rowsUpdated > 0 || Utils.rowUpdatedAfterLiveURLFetch)
-	// && Utils.currentContext == HomeScreen.this) {
-	// mCursor = Utils.db.query("schedule", null,
-	// "MatchUrl <> '' AND MatchResult == '' ", null, null,
-	// null, null);
-	// mCursor.moveToFirst();
-	// mAdapter = null;
-	// mAdapter = new MyAdapter(HomeScreen.this);
-	// populateGallery();
-	// Utils.rowUpdatedAfterLiveURLFetch = false;
-	// }
-	//
-	// }
-	// }
+	private class fetchURLTask extends AsyncTask<Void, Void, String> {
+		int rowsUpdated = 0;
+
+		@Override
+		protected String doInBackground(Void... arg0) {
+			try {
+				rowsUpdated = fetchliveurls();
+				Utils.isDataMatchURLparsed = true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				Utils.isDataMatchURLparsed = false;
+			}
+			return "success";
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if ((rowsUpdated > 0 || Utils.rowUpdatedAfterLiveURLFetch)
+					&& Utils.currentContext == HomeScreen.this) {
+				mCursor = Utils.db.query("schedule", null,
+						"Other1 <> '' AND MatchResult == '' ", null, null,
+						null, null);
+				mCursor.moveToFirst();
+				mAdapter = null;
+				mAdapter = new MyAdapter(HomeScreen.this);
+				populateGallery();
+				Utils.rowUpdatedAfterLiveURLFetch = false;
+			}
+
+		}
+	}
 
 	private void fetchDocs() {
 		networkmanager = new NetworkManager(HomeScreen.this);

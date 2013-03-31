@@ -39,6 +39,7 @@ public interface ApplicationDefines
         // public String SCHEDULE_URL =
         // "https://docs.google.com/spreadsheet/pub?key=0AlvkIWXIpEsRdEJEOWs2eWY2WkV3akdpbTd5MVYzWEE&output=txt";
     	public String SCHEDULE_URL = "https://docs.google.com/spreadsheet/pub?key=0AquokcNauMVidDU5a050WG4xcDA0WndEbmc5RVdDTHc&output=txt";
+    	//public String SCHEDULE_URL = "https://docs.google.com/spreadsheet/pub?key=0AquokcNauMVidDNvWFBuX3pMbXJmTkVTMVlHN1hUSnc&output=txt";
     	//public String SCHEDULE_URL = "https://docs.google.com/spreadsheet/pub?key=0AquokcNauMVidEFvcGVyTDB1SEhlLWtnZDhJVnpFd3c&output=txt";
         // public String SCHEDULE_URL =
         // "https://docs.google.com/spreadsheet/pub?key=0AsDkbvxwVowedGVVdktDekdRdEN0ZFNjLWFBdjMtYWc&output=html";

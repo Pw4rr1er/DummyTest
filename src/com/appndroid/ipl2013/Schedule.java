@@ -7,8 +7,8 @@ import java.util.Vector;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Schedule extends Activity implements OnItemClickListener {
 
@@ -68,7 +69,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			"Feroz Shah Kotla, Delhi",
 			"Himachal Pradesh Cricket Association Stadium, Dharamsala",
 			"JSCA International Cricket Stadium, Ranchi",
-			"M. Chinnaswamy Stadium, Bangalore",
+			"M.Chinnaswamy Stadium, Bangalore",
 			"M.A. Chidambaram Stadium, Chennai",
 			"Punjab Cricket Association Stadium, Chandigarh",
 			"Rajiv Gandhi International Stadium, Hyderabad",
@@ -84,6 +85,43 @@ public class Schedule extends Activity implements OnItemClickListener {
 		setContentView(R.layout.schedule);
 
 		listViewObj = (ListView) findViewById(R.id.scheduleListView);
+		listViewObj.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				TextView txtMatchId = (TextView) view
+						.findViewById(R.id.txtmatchID);
+				Cursor cur = db.rawQuery("select * from schedule where _id='"
+						+ txtMatchId.getText().toString() + "'", null);
+				String winnerTeam = "",matchUrl = "";
+				if (cur.getCount() > 0) {
+					cur.moveToFirst();
+					// Log.d("aaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaa"+cur.getCount());
+					winnerTeam = cur.getString( cur.getColumnIndex( "WinnerTeam" ) ).trim();
+					matchUrl=cur.getString( cur.getColumnIndex( "Other1" ) ).trim();
+					
+				}
+				cur.close();
+				if( winnerTeam.equals( "" ) && matchUrl.equals( "" ) )
+		        {
+		            Toast.makeText( Schedule.this, "Match not started yet", Toast.LENGTH_SHORT ).show();
+
+		        }
+		        else if( !matchUrl.equals( "" ) && winnerTeam.equals( "" ) )
+		        {
+		        	Toast.makeText( Schedule.this, "Live score layout", Toast.LENGTH_SHORT ).show();
+		        }
+		        else
+		        {
+		        	Intent scoreIntent = new Intent( Schedule.this, PastMatches.class );
+		            scoreIntent.putExtra( "schId", Integer.parseInt(txtMatchId.getText().toString()) );
+		            startActivity( scoreIntent );
+		        }
+
+			}
+		});
 
 		drawable = new getDrawable();
 
@@ -162,20 +200,19 @@ public class Schedule extends Activity implements OnItemClickListener {
 		});
 
 	}
-	
+
 	MenuDialog menuDialog;
 
-    public void callEvent()
-    {
+	public void callEvent() {
 
-        // if (menuDialog == null) {
+		// if (menuDialog == null) {
 
-        menuDialog = new MenuDialog( this, "schedule" );
-        // }
-        menuDialog.setCancelable( true );
-        menuDialog.setCanceledOnTouchOutside( true );
-        menuDialog.show();
-    }
+		menuDialog = new MenuDialog(this, "schedule");
+		// }
+		menuDialog.setCancelable(true);
+		menuDialog.setCanceledOnTouchOutside(true);
+		menuDialog.show();
+	}
 
 	@Override
 	public void onBackPressed() {
@@ -261,14 +298,13 @@ public class Schedule extends Activity implements OnItemClickListener {
 		m_cursor = db.rawQuery("select * from schedule", null);
 
 	}
-	
-	 @Override
-	    public boolean onKeyUp( int keyCode, KeyEvent event )
-	    {
-	        if( keyCode == KeyEvent.KEYCODE_MENU )
-	            callEvent();
-	        return super.onKeyUp( keyCode, event );
-	    }
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_MENU)
+			callEvent();
+		return super.onKeyUp(keyCode, event);
+	}
 
 	@Override
 	protected void onResume() {
@@ -320,6 +356,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			TextView txtStadium = (TextView) view.findViewById(R.id.txtStadium);
 			TextView txtResult = (TextView) view.findViewById(R.id.txtResult);
 			TextView txtDate = (TextView) view.findViewById(R.id.txtDateTime);
+			TextView txtId = (TextView) view.findViewById(R.id.txtmatchID);
 
 			String szTeamA = cursor.getString(cursor.getColumnIndex("TeamA"));
 			imgTeamA.setImageResource(drawable.getIcon(szTeamA));
@@ -342,16 +379,26 @@ public class Schedule extends Activity implements OnItemClickListener {
 					+ ","
 					+ cursor.getString(cursor.getColumnIndex("Venue")).trim();
 			txtStadium.setText(strStadium);
+			
+			String strDt=cursor.getString(cursor.getColumnIndex("Date")).trim();
+			String[] strarr = strDt.split( " " );
+			if(strarr[0].startsWith("0"))
+			{
+				strarr[0]= strarr[0].replace("0", "");
+			}
+			
 
 			String strDate = drawable.getWeekShortname(cursor.getString(
 					cursor.getColumnIndex("Day")).trim())
 					+ " , "
-					+ cursor.getString(cursor.getColumnIndex("Date")).trim()
-							.replace("-13", " 2013").replace("-", " ")
+					+ strarr[0]+" "+drawable.getMonthName(strarr[1])+" "+strarr[2].replace("2013", "13")
 					+ "   "
 					+ cursor.getString(cursor.getColumnIndex("IST")).trim()
 					+ " IST";
 			txtDate.setText(strDate);
+
+			String strId = cursor.getString(cursor.getColumnIndex("_id"));
+			txtId.setText(strId);
 
 		}
 
@@ -484,21 +531,19 @@ public class Schedule extends Activity implements OnItemClickListener {
 		listDialog.dismiss();
 
 	}
-	
-	public static void reloadView( final Context context )
-    {
-		Utils.getDB( context );
-        m_cursor = Utils.db.rawQuery( "select * from schedule", null );
-        if( listViewObj!= null )
-        {
-        	listViewObj.invalidate();
-        }
-    }
+
+	public static void reloadView(final Context context) {
+		Utils.getDB(context);
+		m_cursor = Utils.db.rawQuery("select * from schedule", null);
+		if (listViewObj != null) {
+			listViewObj.invalidate();
+		}
+	}
 
 	public void fillScheduleList(Cursor cur) {
 
 		Date d = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("d-MMM-yy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd mm yy");
 		String currentDate = dateFormat.format(d);
 		boolean isSelected = false;
 
@@ -511,7 +556,16 @@ public class Schedule extends Activity implements OnItemClickListener {
 			int currentposotion = cur.getPosition();
 			String matchnumber = cur.getString(0).trim();
 			String day = cur.getString(cur.getColumnIndex("Day")).trim();
-			String date = cur.getString(cur.getColumnIndex("Date")).trim();
+			String strDt=cur.getString(cur.getColumnIndex("Date")).trim();
+			String[] strarr = strDt.split( " " );
+			if(strarr[0].startsWith("0"))
+			{
+				strarr[0]= strarr[0].replace("0", "");
+			}
+			
+
+			String strDate = strarr[0]+" "+drawable.getMonthName(strarr[1])+" "+strarr[2].replace("2013", "13");
+					
 			String time = cur.getString(cur.getColumnIndex("IST")).trim();
 			String teamA = cur.getString(cur.getColumnIndex("TeamA")).trim();
 			String teamB = cur.getString(cur.getColumnIndex("TeamB")).trim();
@@ -533,7 +587,7 @@ public class Schedule extends Activity implements OnItemClickListener {
 			// String manofthematch =
 			// cur.getString(cur.getColumnIndex("ManOfTheMatch")).trim();
 
-			String matchDayDate = day + ", " + date + "  " + time + " IST";
+			String matchDayDate = drawable.getWeekShortname(day) + ", " + strDate + "  " + time + " IST";
 
 			if (matchnumber.equals("QUALIFIER 1"))
 				matchDayDate = matchDayDate + " - " + "QUALIFIER 1";
@@ -546,10 +600,11 @@ public class Schedule extends Activity implements OnItemClickListener {
 
 			scheduleDetails schDetail = new scheduleDetails(
 					drawable.getIcon(teamA), drawable.getIcon(teamB), teamA,
-					teamB, matchDayDate, time, stadium + ", " + venue);
+					teamB, matchDayDate, time, stadium + ", " + venue,
+					matchnumber);
 			team_data[currentposotion] = schDetail;
 
-			if (date.equals(currentDate) && !isSelected) {
+			if (strDt.equals(currentDate) && !isSelected) {
 				listItemToSelect = cur.getPosition();
 				isSelected = true;
 			}
@@ -565,6 +620,5 @@ public class Schedule extends Activity implements OnItemClickListener {
 				R.layout.cric_schedule_item, team_data);
 
 	}
-	
-	
+
 }

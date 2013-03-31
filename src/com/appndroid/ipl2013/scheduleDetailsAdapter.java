@@ -43,6 +43,7 @@ public class scheduleDetailsAdapter extends ArrayAdapter<scheduleDetails> {
 			//holder.txt_matchTime = (TextView) row.findViewById(R.id.matchTime);
 			holder.txt_matchStadium = (TextView) row
 					.findViewById(R.id.txtStadium);
+			holder.txt_matchID = (TextView) row.findViewById(R.id.txtmatchID);
 
 			row.setTag(holder);
 		} else {
@@ -60,6 +61,7 @@ public class scheduleDetailsAdapter extends ArrayAdapter<scheduleDetails> {
 		//holder.txt_matchTime.setText(objTeamDetail.matchTime);
 //		holder.txt_matchNumber.setText(objTeamDetail.matchNumber);
 		holder.txt_matchStadium.setText(objTeamDetail.matchStadium);
+		holder.txt_matchID.setText(objTeamDetail.matchID);
 
 		return row;
 	}
@@ -74,6 +76,7 @@ public class scheduleDetailsAdapter extends ArrayAdapter<scheduleDetails> {
 		TextView txt_matchTime;
 //		TextView txt_matchNumber;
 		TextView txt_matchStadium;
+		TextView txt_matchID;
 
 	}
 }

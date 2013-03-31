@@ -28,6 +28,33 @@
             android:textColor="#69D2E7"
             android:textSize="24.0sp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/llSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imgSettings"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/imgSettings"
+                android:text="settings"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </RelativeLayout>
 
     <ScrollView
@@ -172,60 +199,56 @@
                     android:background="@drawable/icon_v" />
             </LinearLayout>
 
-            <!-- <TextView -->
-            <!-- android:id="@+id/txtTodaysMatches" -->
-            <!-- android:layout_width="wrap_content" -->
-            <!-- android:layout_height="wrap_content" -->
-            <!-- android:layout_below="@+id/ll_main" -->
-            <!-- android:layout_centerHorizontal="true" -->
-            <!-- android:layout_marginTop="5dp" -->
-            <!-- android:layout_marginBottom="10dp" -->
-            <!-- android:text="Today\'s Matches" -->
-            <!-- android:background="@drawable/transparent_background" -->
-            <!-- android:textColor="#69D2E7" -->
-            <!-- android:visibility="gone" -->
-            <!-- android:textSize="16dip" -->
-            <!-- android:textStyle="bold" /> -->
+            <TextView
+                android:id="@+id/txtTodaysMatches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_main"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/transparent_background"
+                android:text="Today\&apos;s Matches"
+                android:textColor="#69D2E7"
+                android:textSize="16dip"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
+            <com.appndroid.ipl2013.MatchGallery
+                android:id="@+id/home_gallery"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dotsLayout"
+                android:layout_marginBottom="5dp"
+                android:fadingEdge="none"
+                android:paddingTop="5.0dip"
+                android:spacing="10.0dip" />
 
-            <!-- <com.appndroid.crick20.ui.MatchGallery -->
-            <!-- android:id="@+id/home_gallery" -->
-            <!-- android:layout_width="fill_parent" -->
-            <!-- android:layout_height="wrap_content" -->
-            <!-- android:layout_below="@+id/dotsLayout" -->
-            <!-- android:fadingEdge="none" -->
-            <!-- android:layout_marginBottom="5dp" -->
-            <!-- android:paddingTop="5.0dip" -->
-            <!-- android:spacing="10.0dip" /> -->
+            <LinearLayout
+                android:id="@+id/dotsLayout"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtTodaysMatches"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/transparent_background"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
 
+                <TextView
+                    android:id="@+id/counter1"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/countershape" >
+                </TextView>
 
-            <!-- <LinearLayout -->
-            <!-- android:id="@+id/dotsLayout" -->
-            <!-- android:layout_width="40dp" -->
-            <!-- android:layout_height="wrap_content" -->
-            <!-- android:layout_below="@+id/txtTodaysMatches" -->
-            <!-- android:layout_centerHorizontal="true" -->
-            <!-- android:background="@drawable/transparent_background" -->
-            <!-- android:gravity="center_horizontal" -->
-            <!-- android:orientation="horizontal" > -->
-
-
-            <!-- <TextView -->
-            <!-- android:id="@+id/counter1" -->
-            <!-- android:layout_width="10dp" -->
-            <!-- android:layout_height="10dp" -->
-            <!-- android:background="@drawable/countershape" > -->
-            <!-- </TextView> -->
-
-
-            <!-- <TextView -->
-            <!-- android:id="@+id/counter2" -->
-            <!-- android:layout_width="10dp" -->
-            <!-- android:layout_height="10dp" -->
-            <!-- android:layout_marginLeft="5dp" -->
-            <!-- android:background="@drawable/countershape" > -->
-            <!-- </TextView> -->
-            <!-- </LinearLayout> -->
+                <TextView
+                    android:id="@+id/counter2"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/countershape" >
+                </TextView>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 

@@ -9,6 +9,7 @@ public class scheduleDetails {
 	public String matchTime;
 	public String matchNumber;
 	public String matchStadium;
+	public String matchID;
 
 	public scheduleDetails() {
 		super();
@@ -16,7 +17,7 @@ public class scheduleDetails {
 
 	public scheduleDetails(int p_teamAicon, int p_teamBicon, String p_teamA,
 			String p_teamB, String p_matchDate, String p_matchTime,
-			 String p_matchStadium) {
+			 String p_matchStadium, String p_matchID) {
 		super();
 		this.teamAicon = p_teamAicon;
 		this.teamBicon = p_teamBicon;
@@ -26,6 +27,7 @@ public class scheduleDetails {
 		this.matchTime = p_matchTime;
 		//this.matchNumber = p_matchNumber;
 		this.matchStadium = p_matchStadium;
+		this.matchID = p_matchID;
 
 	}
 }

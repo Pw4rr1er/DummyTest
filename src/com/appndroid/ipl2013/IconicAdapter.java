@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class IconicAdapter extends ArrayAdapter<String> {
@@ -44,6 +46,13 @@ public class IconicAdapter extends ArrayAdapter<String> {
 			} else if (s.toLowerCase().contains("wkt")) {
 				imageView.setImageResource(R.drawable.wkt);
 			}
+		}
+		else
+		{
+			RelativeLayout.LayoutParams lastTxtParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+			lastTxtParams.setMargins(120, 15, 0,15);
+			textView.setPadding(0, 0, 0, 15);
+			textView.setLayoutParams(lastTxtParams);
 		}
 
 		return rowView;

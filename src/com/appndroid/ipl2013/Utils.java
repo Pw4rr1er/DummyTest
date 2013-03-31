@@ -98,7 +98,7 @@ public class Utils
     public static boolean getDBDeleted( Context context )
     {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences( context );
-        return sharedPreferences.getBoolean( "db_deleted", false );
+        return sharedPreferences.getBoolean( "db_deleted1", false );
     }
 
     public static void setDBDeleted( Context context, boolean bValue )
@@ -106,7 +106,7 @@ public class Utils
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences( context );
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putBoolean( "db_deleted", bValue );
+        editor.putBoolean( "db_deleted1", bValue );
         editor.commit();
     }
 
