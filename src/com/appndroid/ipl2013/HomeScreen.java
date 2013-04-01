@@ -1,13 +1,9 @@
 package com.appndroid.ipl2013;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.security.cert.LDAPCertStoreParameters;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,12 +13,9 @@ import java.util.List;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
-
-import com.appndroid.ipl2013.NetworkManager.HttpAsyncConnector;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -32,7 +25,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -50,6 +42,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.appndroid.ipl2013.NetworkManager.HttpAsyncConnector;
 
 public class HomeScreen extends Activity {
 
@@ -296,11 +290,11 @@ public class HomeScreen extends Activity {
 					String szTeamA = txtTeamA.getTag().toString();
 					String szTeamB = txtTeamB.getTag().toString();
 					String szMatchURL = txtMatchURL.getTag().toString();
-					szMatchURL = "http://sifyscores.cricbuzz.com/data/2013/2013_BAN_SL/SL_BAN_MAR31/scores.xml";
-
-					Toast.makeText(HomeScreen.this,
-							szTeamA + "||" + szTeamB + "||" + szMatchURL,
-							Toast.LENGTH_LONG).show();
+//					szMatchURL = "http://sifyscores.cricbuzz.com/data/2013/2013_BAN_SL/SL_BAN_MAR31/scores.xml";
+//
+//					Toast.makeText(HomeScreen.this,
+//							szTeamA + "||" + szTeamB + "||" + szMatchURL,
+//							Toast.LENGTH_LONG).show();
 
 					Intent scoreIntent = new Intent(HomeScreen.this,
 							LiveScore.class);

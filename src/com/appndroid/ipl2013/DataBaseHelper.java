@@ -44,7 +44,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
     {
 
         boolean dbExist = checkDataBase();
-
+        SQLiteDatabase db_Read = null;
+        
         if( dbExist )
         {
             // do nothing - database already exist
@@ -57,7 +58,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
             // of your application so we are gonna be able to overwrite that
             // database with our database.
 
-            this.getReadableDatabase();
+        	db_Read = this.getReadableDatabase();
+        	db_Read.close();
 
             try
             {

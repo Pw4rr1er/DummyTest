@@ -95,12 +95,13 @@ public class Schedule extends Activity implements OnItemClickListener {
 						.findViewById(R.id.txtmatchID);
 				Cursor cur = db.rawQuery("select * from schedule where _id='"
 						+ txtMatchId.getText().toString() + "'", null);
-				String winnerTeam = "",matchUrl = "";
+				String winnerTeam = "",matchUrl = "", strTeamA="",strTeamB="";
 				if (cur.getCount() > 0) {
 					cur.moveToFirst();
-					// Log.d("aaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaa"+cur.getCount());
 					winnerTeam = cur.getString( cur.getColumnIndex( "WinnerTeam" ) ).trim();
 					matchUrl=cur.getString( cur.getColumnIndex( "Other1" ) ).trim();
+					strTeamA = cur.getString(cur.getColumnIndex( "TeamA" )).trim();
+					strTeamB = cur.getString(cur.getColumnIndex( "TeamB" )).trim();
 					
 				}
 				cur.close();
@@ -111,7 +112,10 @@ public class Schedule extends Activity implements OnItemClickListener {
 		        }
 		        else if( !matchUrl.equals( "" ) && winnerTeam.equals( "" ) )
 		        {
-		        	Toast.makeText( Schedule.this, "Live score layout", Toast.LENGTH_SHORT ).show();
+		        	Intent scoreIntent = new Intent( Schedule.this, LiveScore.class );
+		        	scoreIntent.putExtra("match", strTeamA + "||" + strTeamB
+							+ "||" + matchUrl);
+		            startActivity( scoreIntent );
 		        }
 		        else
 		        {
